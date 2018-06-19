@@ -15,6 +15,6 @@ services:
       - "7890:7890"
       - "7891:7891"
     restart: always
-    network_mode: "host"
+    network_mode: "bridge"
     container_name: clash
 ```
