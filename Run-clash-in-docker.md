@@ -4,15 +4,14 @@ Below is a simple demo docker-compose file:
 
 **NOTE: config.ini must exist before `docker-compose up -d`**
 
-Here is a sample config.ini
-```ini
-[General]
-port = 7890
-socks-port = 7891
+Here is a sample config.yml
+```yml
+port: 7890
+socks-port: 7891
 
-# `allow-lan` must be true in your config.ini
-allow-lan = true
-external-controller = 0.0.0.0:8080
+# `allow-lan` must be true in your config.yml
+allow-lan: true
+external-controller: 0.0.0.0:8080
 ```
 
 and a sample `docker-compose.yml`
@@ -23,7 +22,7 @@ services:
   clash:
     image: dreamacro/clash
     volumes:
-      - ./config.ini:/root/.config/clash/config.ini
+      - ./config.yml:/root/.config/clash/config.yml
     ports:
       - "7890:7890"
       - "7891:7891"
