@@ -22,7 +22,7 @@ services:
   clash:
     image: dreamacro/clash
     volumes:
-      - ./config.yml:/root/.config/clash/config.yaml
+      - ./config.yaml:/root/.config/clash/config.yaml
     ports:
       - "7890:7890"
       - "7891:7891"
