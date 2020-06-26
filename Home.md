@@ -5,16 +5,16 @@ Welcome to the official Wiki page for the Clash core project ("Clash"). There ar
 
 This wiki will cover both versions of Clash. 
 
-> This documentation is still in the works, and we strive to improve it.
+> This documentation is still in the works, and we strive to improve it.  
   You are welcome to contribute.
 
-# Getting started
+# Getting Started
 You can either grab the pre-built binaries of Clash from [https://github.com/Dreamacro/clash/releases](https://github.com/Dreamacro/clash/releases) or build locally.  
 Clash requires Golang 1.13 or a higher version.
 
 ```
 $ go get -u -v github.com/Dreamacro/clash
-$ GOOS=darwin GOARCH=amd64 go build github.com/Dreamacro/clash # build Clash for darwin-amd64
+$ GOOS=darwin GOARCH=amd64 go build github.com/Dreamacro/clash
 ```
 
 No output indicates that the build was successful. You should get the executable binary in your current directory.
@@ -24,10 +24,10 @@ $ file clash
 $ clash -v
 ```
 
-You can now go-ahead to the next chapters of this wiki in which we'll cover the configuration syntax of Clash.
+You can now move forward to the next chapters of this wiki in which we'll cover the configuration syntax of Clash.
 
 # The Developers
-There will be no Clash without the following developers:
+There will be no Clash without the following incredible developers:
 * [Dreamacro](https://github.com/Dreamacro)
 * [beyondkmp](https://github.com/beyondkmp)
 * [comzyh](https://github.com/comzyh)
