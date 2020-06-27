@@ -9,7 +9,7 @@ $ cp config.yaml /etc/clash/
 $ cp Country.mmdb /etc/clash/
 ```
 
-Create the systemd configuration file at `/etc/systemd/system/clashd.service`:
+Create the systemd configuration file at `/etc/systemd/system/clash.service`:
 ```
 [Unit]
 Description=Clash Daemon
@@ -31,10 +31,10 @@ Launch clashd immediately with:
 $ systemctl start clash
 ```
 
-Check the health and logs of clashd with:
+Check the health and logs of Clash with:
 ```
 $ systemctl status clash
-$ journalctl -xe # get logs/status
+$ journalctl -xe
 ```
 
 Credits to [ktechmidas](https://github.com/ktechmidas) for this guide. ([#754](https://github.com/Dreamacro/clash/issues/754))
