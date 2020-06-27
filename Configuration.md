@@ -288,7 +288,6 @@ rules:
   - DOMAIN-KEYWORD,google,auto
   - DOMAIN,google.com,auto
   - DOMAIN-SUFFIX,ad.com,REJECT
-  # rename SOURCE-IP-CIDR and would remove after prerelease
   - SRC-IP-CIDR,192.168.1.201/32,DIRECT
   # optional param "no-resolve" for IP rules (GEOIP IP-CIDR)
   - IP-CIDR,127.0.0.0/8,DIRECT
