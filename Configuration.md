@@ -1,38 +1,44 @@
 # Introduction
 Clash uses [YAML](https://yaml.org), *YAML Ain't Markup Language*, for configuration files. YAML is designed to be easy to be read, be written and be interpreted by computers, and is commonly used for exactly configuration files. In this chapter, we'll cover the common features of Clash and how they should be used and configured.
 
+Clash works by opening HTTP, SOCKS5 or transparent proxy server on the local end. When a request, or say packet, comes in, Clash *routes* the packet to different remote servers ("nodes) with either VMess, Shadowsocks, Snell, Trojan, SOCKS5 or HTTP protocol. 
+
 # All Configuration Options
 ```yaml
-# port of HTTP
+# Port of HTTP proxy server on the local end
 port: 7890
 
-# port of SOCKS5
+# Port of SOCKS5 proxy server on the local end
 socks-port: 7891
 
-# redir port for Linux and macOS
-# redir-port: 7892
+# Transparent proxy server port for Linux and macOS
+redir-port: 7892
 
+# Set to true to allow connections to local-end server from other LAN IP addresses
 allow-lan: false
 
-# Only applicable when setting allow-lan to true
-# "*": bind all IP addresses
+# This is only applicable when `allow-lan` is `true`
+# '*': bind all IP addresses
 # 192.168.122.11: bind a single IPv4 address
 # "[aaaa::a8aa:ff:fe09:57d8]": bind a single IPv6 address
-# bind-address: "*"
+bind-address: '*'
 
-# Rule / Global / Direct (default is Rule)
+# Clash router working mode
+# Rule: rule-based packet routing
+# Global: all packets will be forwarded to a single endpoint
+# Direct: directly forward the packets to the Internet
 mode: Rule
 
-# set log level to stdout (default is info)
+# Clash by default prints logs to STDOUT
 # info / warning / error / debug / silent
 log-level: info
 
-# RESTful API for clash
+# RESTful web API listening address
 external-controller: 127.0.0.1:9090
 
-# you can put the static web resource (such as clash-dashboard) to a directory, and clash would serve in `${API}/ui`
-# input is a relative path to the configuration directory or an absolute path
-# external-ui: folder
+# A relative path to the configuration directory or an absolute path to a directory in which
+# you put some static web resource. Clash core will then serve it at `http://{{external-controller}}/ui`.
+external-ui: folder
 
 # Secret for RESTful API (Optional)
 # secret: ""
