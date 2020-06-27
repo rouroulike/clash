@@ -305,3 +305,9 @@ You can use command-line option `-d` to specify a configuration directory:
 $ clash -d . # current directory
 $ clash -d /etc/clash
 ```
+
+# Syntax
+* IPv6 addresses should be wrapped with `[` and `]`. For example: `[aaaa::a8aa:ff:fe09:57d8]`.
+* Wildcard characters. Beware any domain with these characters should be wrapped with single-quotes `'`.
+  * `*`: single-level wildcard character. `*.google.com` matches `www.google.com` but not `foo.bar.google.com`.
+  * `+`: multi-level wildcard character. `+.google.com` matches `google.com`, `www.google.com` and `foo.bar.google.com`.
