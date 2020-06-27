@@ -313,3 +313,25 @@ $ clash -d /etc/clash
 * Wildcard characters. Beware any domain with these characters should be wrapped with single-quotes `'`.
   * `*`: single-level wildcard character. `*.google.com` matches `www.google.com` but not `foo.bar.google.com`. It is possible to use `*.*.*.google.com`.
   * `+`: multi-level wildcard character. `+.google.com` matches `google.com`, `www.google.com` and `foo.bar.google.com`. This works exactly like `DOMAIN-SUFFIX`.
+
+# DNS
+TODO
+
+# Proxy Groups
+TODO
+
+# Proxy Providers
+TODO
+
+# Rules
+Available keywords:
+* `DOMAIN`
+* `DOMAIN-KEYWORD`
+* `DOMAIN-SUFFIX`
+* `DOMAIN-SUFFIX`
+* `DST-PORT`
+* `GEOIP`
+* `IP-CIDR`
+* `MATCH`
+* `SRC-IP-CIDR`
+* `SRC-PORT`
