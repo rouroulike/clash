@@ -309,5 +309,5 @@ $ clash -d /etc/clash
 # Syntax
 * IPv6 addresses should be wrapped with `[` and `]`. For example: `[aaaa::a8aa:ff:fe09:57d8]`.
 * Wildcard characters. Beware any domain with these characters should be wrapped with single-quotes `'`.
-  * `*`: single-level wildcard character. `*.google.com` matches `www.google.com` but not `foo.bar.google.com`.
+  * `*`: single-level wildcard character. `*.google.com` matches `www.google.com` but not `foo.bar.google.com`. It is possible to use `*.*.*.google.com`.
   * `+`: multi-level wildcard character. `+.google.com` matches `google.com`, `www.google.com` and `foo.bar.google.com`.
