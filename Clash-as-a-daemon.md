@@ -76,3 +76,9 @@ Stop Clash with:
 ```
 $ docker-compose stop
 ```
+
+# PM2
+```
+$ wget -qO- https://getpm2.com/install.sh | bash
+$ pm2 start clash
+```
