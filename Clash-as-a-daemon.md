@@ -38,3 +38,41 @@ $ journalctl -xe # get logs/status
 ```
 
 Credits to [ktechmidas](https://github.com/ktechmidas) for this guide. ([#754](https://github.com/Dreamacro/clash/issues/754))
+
+# Docker
+We recommend deploying Clash with [Docker Compose](https://docs.docker.com/compose/).
+
+```yaml
+version: '3'
+services:
+  clash:
+    image: dreamacro/clash
+    container_name: clash
+    volumes:
+      - ./config.yaml:/root/.config/clash/config.yaml
+      # - ./ui:/ui # dashboard volume
+    ports:
+      - "7890:7890"
+      - "7891:7891"
+      # - "8080:8080" # external controller (Restful API)
+    restart: unless-stopped
+    network_mode: "bridge" # or "host" on Linux
+```
+
+Save as `docker-compose.yaml`, create Clash `config.yaml` in the same directory and run:
+
+```
+$ docker-compose up -d
+```
+ 
+To get Clash up. You can view the logs with:
+
+```
+$ docker-compose logs
+```
+
+Stop Clash with:
+
+```
+$ docker-compose stop
+```
