@@ -294,3 +294,14 @@ rules:
   # you also can use `FINAL,Proxy` or `FINAL,,Proxy` now
   - MATCH,auto
 ```
+
+# Specifying Configuration Directory
+If not otherwise specified, Clash by default reads the configuration file at `$HOME/.config/clash/config.yaml`.
+If it doesn't exist, Clash will generate the default settings.  
+
+You can use command-line option `-d` to specify a configuration directory: 
+
+```
+$ clash -d . # current directory
+$ clash -d /etc/clash
+```
