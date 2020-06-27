@@ -24,10 +24,10 @@ allow-lan: false
 bind-address: '*'
 
 # Clash router working mode
-# Rule: rule-based packet routing
-# Global: all packets will be forwarded to a single endpoint
-# Direct: directly forward the packets to the Internet
-mode: Rule
+# rule: rule-based packet routing
+# global: all packets will be forwarded to a single endpoint
+# direct: directly forward the packets to the Internet
+mode: rule
 
 # Clash by default prints logs to STDOUT
 # info / warning / error / debug / silent
