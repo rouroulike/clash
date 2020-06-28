@@ -1,4 +1,5 @@
 # Introduction
+
 Clash uses [YAML](https://yaml.org), *YAML Ain't Markup Language*, for configuration files. YAML is designed to be easy to be read, be written and be interpreted by computers, and is commonly used for exactly configuration files. In this chapter, we'll cover the common features of Clash and how they should be used and configured.
 
 Clash works by opening HTTP, SOCKS5 or transparent proxy server on the local end. When a request, or say packet, comes in, Clash *routes* the packet to different remote servers ("nodes") with either VMess, Shadowsocks, Snell, Trojan, SOCKS5 or HTTP protocol.
@@ -337,7 +338,7 @@ rules:
   - DOMAIN,google.com,auto
   - DOMAIN-SUFFIX,ad.com,REJECT
   - SRC-IP-CIDR,192.168.1.201/32,DIRECT
-  # optional param "no-resolve" for IP rules (GEOIP IP-CIDR)
+  # optional param "no-resolve" for IP rules (GEOIP, IP-CIDR, IP-CIDR6)
   - IP-CIDR,127.0.0.0/8,DIRECT
   - GEOIP,CN,DIRECT
   - DST-PORT,80,DIRECT
@@ -436,3 +437,6 @@ There are two additional special policies:
 * `REJECT`: a blackhole for packets. Clash will not process any I/O to this policy.
 
 A policy can be either `DIRECT`, `REJECT`, a proxy group or a proxy server.
+
+## no-resolve
+`no-resolve` is an additional option for `GEOIP`, `IP-CIDR` or `IP-CIDR6` rules. Append `,no-resolve` to these rules to enable. Clash by default translate the domain names to IP addresses when encountering IP rules. Clash skips the IP rules with this option enabled when encountering packets that has a FQDN target.
