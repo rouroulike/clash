@@ -60,7 +60,9 @@ external-ui: folder
 # Outbound interface name
 interface-name: en0
 
-# Static hosts for DNS server and connection establishment
+# Static hosts for DNS server and connection establishment, only works
+# when `dns.enhanced-mode` is `redir-host`.
+#
 # Wildcard hostnames are supported (e.g. *.clash.dev, *.foo.*.example.com)
 # Non-wildcard domain names has a higher priority than wildcard domain names
 # e.g. foo.example.com > *.example.com > .example.com
