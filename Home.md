@@ -5,8 +5,8 @@ Welcome to the official Wiki page for the Clash core project ("Clash"). There ar
 
 This wiki will cover both versions of Clash. 
 
-> This documentation is still in the works, and we strive to improve it.  
-  You are welcome to contribute.
+> This documentation is still in the works, and we strive to improve it and keep it accurate.  
+  Until then, it's recommended to read https://lancellc.gitbook.io/clash/ as well.
 
 # Getting Started
 You can either grab the pre-built binaries of Clash from [https://github.com/Dreamacro/clash/releases](https://github.com/Dreamacro/clash/releases) or build locally.  
