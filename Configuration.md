@@ -369,7 +369,9 @@ The concept of "fake IP" addresses is origined from [RFC 3089](https://tools.iet
 
 > A "fake IP" address is used as a key to look up the corresponding "FQDN" information.
 
-When a DNS request is sent to the DNS server, Clash allocates a free *fake IP address* in the fake IP address pool (a mapping table that manages mappings between the FQDN and "fake IP" address). Clash will then lookup the FQDN and check the GEOIP for the IP address, this is merely for the rules (like GEOIP). When a request to the said "fake IP" address is sent to Clash, Clash will establish a connection to the FQDN linked with the "fake IP" through a SOCKS5, Shadowsocks (or other protocols) server.
+When a DNS request is sent to the DNS server, Clash allocates a free *fake IP address* in the fake IP address pool, a mapping table that manages mappings between the FQDN and "fake IP" address. Note that the IP addresses in the fake IP address pool are, and should never be, used in real communications. The default CIDR for the pool is a reserved IPv4 address space `198.18.0.1/16`, which can be changed in `dns.fake-ip-range`.
+
+Clash will then lookup the FQDN and check the GEOIP for the IP address, this is merely for the rules (like GEOIP). When a request to the said "fake IP" address is sent to Clash, Clash establishs a connection to the FQDN linked with the "fake IP" through a SOCKS5, Shadowsocks (or other protocols) server.
 
 # Proxy Groups
 TODO
