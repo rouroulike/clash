@@ -6,7 +6,7 @@ Clash works by opening HTTP, SOCKS5 or transparent proxy server on the local end
 # All Configuration Options
 
 ```yaml
-# Port of HTTP proxy server on the local end
+# Port of HTTP(S) proxy server on the local end
 port: 7890
 
 # Port of SOCKS5 proxy server on the local end
@@ -15,7 +15,7 @@ socks-port: 7891
 # Transparent proxy server port for Linux and macOS
 redir-port: 7892
 
-# (HTTP and SOCKS5 in one port)
+# HTTP(S) and SOCKS5 server on the same port
 # mixed-port: 7890
 
 # authentication of local SOCKS5/HTTP(S) server
@@ -23,7 +23,8 @@ redir-port: 7892
 #  - "user1:pass1"
 #  - "user2:pass2"
 
-# Set to true to allow connections to local-end server from other LAN IP addresses
+# Set to true to allow connections to local-end server from
+# other LAN IP addresses
 allow-lan: false
 
 # This is only applicable when `allow-lan` is `true`
@@ -48,23 +49,26 @@ ipv6: true
 # RESTful web API listening address
 external-controller: 127.0.0.1:9090
 
-# A relative path to the configuration directory or an absolute path to a directory in which
-# you put some static web resource. Clash core will then serve it at `http://{{external-controller}}/ui`.
+# A relative path to the configuration directory or an absolute path to a
+# directory in which you put some static web resource. Clash core will then
+# serve it at `http://{{external-controller}}/ui`.
 external-ui: folder
 
-# Secret for RESTful API (Optional)
+# Secret for the RESTful API (optional)
 # secret: ""
 
 # Outbound interface name
 interface-name: en0
 
-# Hosts, wildcard supported (e.g. *.clash.dev Even *.foo.*.example.com)
-# static domain names has a higher priority than wildcard domain (foo.example.com > *.example.com > .example.com)
-# +.foo.com equal .foo.com and foo.com
-# hosts:
-#   '*.clash.dev': 127.0.0.1
-#   '.dev': 127.0.0.1
-#   'alpha.clash.dev': '::1'
+# Static hosts for DNS server and connection establishment
+# Wildcard hostnames are supported (e.g. *.clash.dev, *.foo.*.example.com)
+# Non-wildcard domain names has a higher priority than wildcard domain names
+# e.g. foo.example.com > *.example.com > .example.com
+# P.S. +.foo.com equals to .foo.com and foo.com
+hosts:
+  # '*.clash.dev': 127.0.0.1
+  # '.dev': 127.0.0.1
+  # 'alpha.clash.dev': '::1'
 
 # DNS server settings
 # This section is optional. When not present, DNS server will be disabled.
@@ -79,7 +83,7 @@ dns:
     - 114.114.114.114
     - 8.8.8.8
   enhanced-mode: redir-host # or fake-ip
-  # fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
+  fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
   
   # Hostnames in this list will not be resolved with fake IPs
   # i.e. questions to these domain names will always be answered with their
@@ -88,23 +92,27 @@ dns:
   #   - '*.lan'
   #   - localhost.ptlogin2.qq.com
   
+  # Clash will answer the DNS question with the first result
   nameserver:
     - 114.114.114.114 # default value
     - 8.8.8.8 # default value
     - tls://dns.rubyfish.cn:853 # DNS over TLS
     - https://1.1.1.1/dns-query # DNS over HTTPS
 
-  # concurrent request with nameserver, fallback is used when GEOIP
-  # country isn't CN
-  fallback:
-    - tcp://1.1.1.1
+  # When `fallback` is present, the DNS server will send concurrent requests
+  # to the servers in this section along with servers in `nameservers`.
+  # The answers from fallback servers are used when the GEOIP country
+  # is not `CN`.
+  # fallback:
+  #   - tcp://1.1.1.1
 
+  # IP addresses in the specified subnets will be considered invalid
+  # and skipped when resolving with fallback nameservers.
+  # This is a countermeasure against DNS pollution attacks
   fallback-filter:
     geoip: true
-    # IP addresses in these subnets will be considered invalid
-    # and skipped when resolving
     ipcidr:
-      - 240.0.0.0/4
+      # - 240.0.0.0/4
 
 proxies:
   # Shadowsocks
