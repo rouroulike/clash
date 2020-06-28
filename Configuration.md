@@ -1,9 +1,10 @@
-# Introduction
+## Introduction
 Clash uses [YAML](https://yaml.org), *YAML Ain't Markup Language*, for configuration files. YAML is designed to be easy to be read, be written and be interpreted by computers, and is commonly used for exactly configuration files. In this chapter, we'll cover the common features of Clash and how they should be used and configured.
 
-Clash works by opening HTTP, SOCKS5 or transparent proxy server on the local end. When a request, or say packet, comes in, Clash *routes* the packet to different remote servers ("nodes") with either VMess, Shadowsocks, Snell, Trojan, SOCKS5 or HTTP protocol. 
+Clash works by opening HTTP, SOCKS5 or transparent proxy server on the local end. When a request, or say packet, comes in, Clash *routes* the packet to different remote servers ("nodes") with either VMess, Shadowsocks, Snell, Trojan, SOCKS5 or HTTP protocol.
 
 # All Configuration Options
+
 ```yaml
 # Port of HTTP proxy server on the local end
 port: 7890
@@ -11,11 +12,16 @@ port: 7890
 # Port of SOCKS5 proxy server on the local end
 socks-port: 7891
 
+# Transparent proxy server port for Linux and macOS
+redir-port: 7892
+
 # (HTTP and SOCKS5 in one port)
 # mixed-port: 7890
 
-# Transparent proxy server port for Linux and macOS
-redir-port: 7892
+# authentication of local SOCKS5/HTTP(S) server
+# authentication:
+#  - "user1:pass1"
+#  - "user2:pass2"
 
 # Set to true to allow connections to local-end server from other LAN IP addresses
 allow-lan: false
@@ -36,6 +42,9 @@ mode: rule
 # info / warning / error / debug / silent
 log-level: info
 
+# When set to false, resolver won't translate hostnames to IPv6 addresses
+ipv6: true
+
 # RESTful web API listening address
 external-controller: 127.0.0.1:9090
 
@@ -46,16 +55,12 @@ external-ui: folder
 # Secret for RESTful API (Optional)
 # secret: ""
 
-interface-name: en0 # outbound interface name
+# Outbound interface name
+interface-name: en0
 
-# authentication of local SOCKS5/HTTP(S) server
-# authentication:
-#  - "user1:pass1"
-#  - "user2:pass2"
-
-# # hosts, support wildcard (e.g. *.clash.dev Even *.foo.*.example.com)
-# # static domain has a higher priority than wildcard domain (foo.example.com > *.example.com > .example.com)
-# # +.foo.com equal .foo.com and foo.com
+# Hosts, wildcard supported (e.g. *.clash.dev Even *.foo.*.example.com)
+# static domain names has a higher priority than wildcard domain (foo.example.com > *.example.com > .example.com)
+# +.foo.com equal .foo.com and foo.com
 # hosts:
 #   '*.clash.dev': 127.0.0.1
 #   '.dev': 127.0.0.1
@@ -63,7 +68,7 @@ interface-name: en0 # outbound interface name
 
 # dns:
   # enable: true # set true to enable dns (default is false)
-  # ipv6: false # it only affect the dns server response, default is false
+  # ipv6: false # when false, response to AAAA questions will be empty
   # listen: 0.0.0.0:53
   # # default-nameserver: # resolve dns nameserver host, should fill pure IP
   # #   - 114.114.114.114
@@ -85,8 +90,8 @@ interface-name: en0 # outbound interface name
   #     - 240.0.0.0/4
 
 proxies:
-  # shadowsocks
-  # The supported ciphers(encrypt methods):
+  # Shadowsocks
+  # The supported ciphers (encryption methods):
   #   aes-128-gcm aes-192-gcm aes-256-gcm
   #   aes-128-cfb aes-192-cfb aes-256-cfb
   #   aes-128-ctr aes-192-ctr aes-256-ctr
@@ -185,7 +190,8 @@ proxies:
     # tls: true # https
     # skip-cert-verify: true
 
-  # snell
+  # Snell
+  # Beware that there's currently no UDP support yet
   - name: "snell"
     type: snell
     server: server
@@ -195,7 +201,7 @@ proxies:
       # mode: http # or tls
       # host: bing.com
 
-  # trojan
+  # Trojan
   - name: "trojan"
     type: trojan
     server: server
@@ -318,7 +324,13 @@ $ clash -d /etc/clash
   * `+`: multi-level wildcard character. `+.google.com` matches `google.com`, `www.google.com` and `foo.bar.google.com`. This works exactly like `DOMAIN-SUFFIX`.
 
 # DNS
-The DNS server shipped with Clash aims to minimize DNS pollution attack impact and improve network performance.
+The DNS server shipped with Clash aims to minimize DNS pollution attack impact and improve network performance. There are two modes for it to work: `redir-host` and `fake-ip`. The biggest difference between the two is how IP addresses are resolved and how the connections are established.
+
+## redir-host
+This is more of a traditional way of how proxies work. In this mode, the domains to connect to are resolved with the nameservers specified with `dns.nameserver` field. The first result returned will be sent to the client.
+
+## fake-ip
+When a DNS request is sent to the DNS server, Clash allocates a free *fake IP address* in the fake IP address pool (the IP CIDR can be specified with `dns.fake-ip-range`).
 
 # Proxy Groups
 TODO
