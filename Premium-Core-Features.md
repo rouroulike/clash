@@ -122,7 +122,3 @@ rules:
   - RULE-SET,apple,REJECT
   - RULE-SET,microsoft,policy
 ```
-
-**NOTE**
-1. The binary was compiled from my computer, not from CI.
-2. If clash works on another device with TUN, you other VPN apps may not works. `fake-ip-filter` may helpful.
