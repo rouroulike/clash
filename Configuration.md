@@ -56,6 +56,7 @@ external-ui: folder
 
 # Secret for the RESTful API (optional)
 # Authenticate by spedifying HTTP header `Authorization: Bearer ${secret}`
+# ALWAYS set a secret if RESTful API is listening on 0.0.0.0
 # secret: ""
 
 # Outbound interface name
