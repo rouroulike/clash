@@ -416,13 +416,21 @@ proxies:
 
 # Rules
 Available keywords:
-* `DOMAIN`
-* `DOMAIN-KEYWORD`
-* `DOMAIN-SUFFIX`
-* `DOMAIN-SUFFIX`
-* `DST-PORT`
-* `GEOIP`
-* `IP-CIDR`
-* `MATCH`
-* `SRC-IP-CIDR`
-* `SRC-PORT`
+
+* `DOMAIN`: `DOMAIN,www.google.com,policy` routes only `www.google.com` to `policy`.
+* `DOMAIN-SUFFIX`: `DOMAIN-KEYWORD,youtube.com,policy` routes any FQDN that ends with `youtube.com`, for example `www.youtube.com` or `foo.bar.youtube.com`, to `policy`. This works like the wildcard character `+`.
+* `DOMAIN-KEYWORD`: `DOMAIN-KEYWORD,google,policy` routes any FQDN that contains `google`, for example `www.google.com` or `googleapis.com`, to `policy`.
+* `GEOIP`: `GEOIP,CN,policy` routes any requests to a China IP address to `policy`.
+* `IP-CIDR`: `IP-CIDR,127.0.0.0/8,DIRECT` routes any packets to `127.0.0.0/8` to the `DIRECT` policy.
+* `IP-CIDR6`: `IP-CIDR6,[2620:0:2d0:200::7/32],policy` routes any packets to `2620:0:2d0:200::7/32` to `policy`.
+* `SRC-IP-CIDR`: `SRC-IP-CIDR,192.168.1.201/32,DIRECT` routes any packets **from** `192.168.1.201/32` to the `DIRECT` policy.
+* `SRC-PORT`: `SRC-PORT,80,policy` routes any packets **from** the port 80 to `policy`.
+* `DST-PORT`: `DST-PORT,80,policy` routes any packets **to** the port 80 to `policy`.
+* `MATCH`: `MATCH,policy` routes the rest of the packets to `policy`.
+
+There are two additional special policies:
+
+* `DIRECT`: directly connects to the target without any proxies involved
+* `REJECT`: a blackhole for packets. Clash will not process any I/O to this policy.
+
+A policy can be either `DIRECT`, `REJECT`, a proxy group or a proxy server.
