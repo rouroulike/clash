@@ -55,6 +55,7 @@ external-controller: 127.0.0.1:9090
 external-ui: folder
 
 # Secret for the RESTful API (optional)
+# Authenticate by spedifying HTTP header `Authorization: Bearer ${secret}`
 # secret: ""
 
 # Outbound interface name
