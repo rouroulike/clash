@@ -426,7 +426,7 @@ Available keywords:
 * `SRC-IP-CIDR`: `SRC-IP-CIDR,192.168.1.201/32,DIRECT` routes any packets **from** `192.168.1.201/32` to the `DIRECT` policy.
 * `SRC-PORT`: `SRC-PORT,80,policy` routes any packets **from** the port 80 to `policy`.
 * `DST-PORT`: `DST-PORT,80,policy` routes any packets **to** the port 80 to `policy`.
-* `MATCH`: `MATCH,policy` routes the rest of the packets to `policy`.
+* `MATCH`: `MATCH,policy` routes the rest of the packets to `policy`. This rule is **required**.
 
 There are two additional special policies:
 
