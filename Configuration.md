@@ -11,6 +11,9 @@ port: 7890
 # Port of SOCKS5 proxy server on the local end
 socks-port: 7891
 
+# (HTTP and SOCKS5 in one port)
+# mixed-port: 7890
+
 # Transparent proxy server port for Linux and macOS
 redir-port: 7892
 
@@ -43,18 +46,16 @@ external-ui: folder
 # Secret for RESTful API (Optional)
 # secret: ""
 
-# experimental feature
-experimental:
-  ignore-resolve-fail: true # ignore dns resolve fail, default value is true
-  # interface-name: en0 # outbound interface name
+interface-name: en0 # outbound interface name
 
 # authentication of local SOCKS5/HTTP(S) server
 # authentication:
 #  - "user1:pass1"
 #  - "user2:pass2"
 
-# # experimental hosts, support wildcard (e.g. *.clash.dev Even *.foo.*.example.com)
+# # hosts, support wildcard (e.g. *.clash.dev Even *.foo.*.example.com)
 # # static domain has a higher priority than wildcard domain (foo.example.com > *.example.com > .example.com)
+# # +.foo.com equal .foo.com and foo.com
 # hosts:
 #   '*.clash.dev': 127.0.0.1
 #   '.dev': 127.0.0.1
@@ -62,7 +63,7 @@ experimental:
 
 # dns:
   # enable: true # set true to enable dns (default is false)
-  # ipv6: false # default is false
+  # ipv6: false # it only affect the dns server response, default is false
   # listen: 0.0.0.0:53
   # # default-nameserver: # resolve dns nameserver host, should fill pure IP
   # #   - 114.114.114.114
@@ -139,6 +140,7 @@ proxies:
     # udp: true
     # tls: true
     # skip-cert-verify: true
+    # servername: example.com # priority over wss host
     # network: ws
     # ws-path: /path
     # ws-headers:
@@ -224,6 +226,7 @@ proxy-groups:
       - ss1
       - ss2
       - vmess1
+    # tolerance: 150
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
 
@@ -315,7 +318,7 @@ $ clash -d /etc/clash
   * `+`: multi-level wildcard character. `+.google.com` matches `google.com`, `www.google.com` and `foo.bar.google.com`. This works exactly like `DOMAIN-SUFFIX`.
 
 # DNS
-TODO
+The DNS server shipped with Clash aims to minimize DNS pollution attack impact and improve network performance.
 
 # Proxy Groups
 TODO
