@@ -332,19 +332,6 @@ proxy-providers:
       interval: 36000
       url: http://www.gstatic.com/generate_204
 
-# Premium only
-rule-providers:
-  apple:
-    behavior: "domain" # domain, ipcidr or classical (premium core only)
-    type: http
-    url: "url"
-    interval: 3600
-    path: ./apple.yaml
-  microsoft:
-    behavior: "domain"
-    type: file
-    path: /microsoft.yaml
-
 rules:
   - DOMAIN-SUFFIX,google.com,auto
   - DOMAIN-KEYWORD,google,auto
@@ -364,7 +351,7 @@ rules:
 If not otherwise specified, Clash by default reads the configuration file at `$HOME/.config/clash/config.yaml`.
 If it doesn't exist, Clash will generate the default settings.  
 
-You can use command-line option `-d` to specify a configuration directory: 
+You can use command-line option `-d` to specify a configuration directory:
 
 ```
 $ clash -d . # current directory
@@ -454,56 +441,3 @@ A policy can be either `DIRECT`, `REJECT`, a proxy group or a proxy server.
 
 ## no-resolve
 `no-resolve` is an additional option for `GEOIP`, `IP-CIDR` or `IP-CIDR6` rules. Append `,no-resolve` to these rules to enable. Clash by default translate the domain names to IP addresses when encountering IP rules. Clash skips the IP rules with this option enabled when encountering packets that has a FQDN target.
-
-# Rule Providers
-Rule Providers is pretty much the same comparing to Proxy Providers. It enables users to load rules from external sources and overall cleaner configuration. This feature is currently Premium core only.
-
-To define a Rule Provider, add the `rule-providers` field to the main configuration:
-
-```yaml
-rule-providers:
-  apple:
-    behavior: "domain"
-    type: http
-    url: "url"
-    interval: 3600
-    path: ./apple.yaml
-  microsoft:
-    behavior: "domain"
-    type: file
-    path: /microsoft.yaml
-```
-
-There are three behavior types available:
-
-## `domain`
-
-```yaml
-payload:
-  - '.blogger.com'
-  - '*.*.microsoft.com'
-  - 'books.itunes.apple.com'
-```
-
-## `ipcidr`
-
-```yaml
-payload:
-  - '192.168.1.0/24'
-  - '10.0.0.0.1/32'
-```
-
-## `classical`
-
-```yaml
-payload:
-  - DOMAIN-SUFFIX,google.com
-  - DOMAIN-KEYWORD,google
-  - DOMAIN,ad.com
-  - SRC-IP-CIDR,192.168.1.201/32
-  - IP-CIDR,127.0.0.0/8
-  - GEOIP,CN
-  - DST-PORT,80
-  - SRC-PORT,7777
-  # MATCH is not necessary here
-```
