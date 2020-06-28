@@ -362,10 +362,14 @@ $ clash -d /etc/clash
 The DNS server shipped with Clash aims to minimize DNS pollution attack impact and improve network performance. There are two modes for it to work: `redir-host` and `fake-ip`. The biggest difference between the two is how IP addresses are resolved and how the connections are established.
 
 ## redir-host
-This is more of a traditional way of how proxies work. In this mode, the domains to connect to are resolved with the nameservers specified with `dns.nameserver` field. The first result returned will be sent to the client.
+This is more of a traditional way of how proxies work. In this mode, the domains to connect to are resolved with the settings in `dns.nameserver`, `dns.fallback` and `dns.fallback-filter`. The first result returned will be sent back to the client. Client can then establish a connection to the returned IP address through Clash.
 
 ## fake-ip
-When a DNS request is sent to the DNS server, Clash allocates a free *fake IP address* in the fake IP address pool (the IP CIDR can be specified with `dns.fake-ip-range`).
+The concept of "fake IP" addresses is origined from [RFC 3089](https://tools.ietf.org/rfc/rfc3089):
+
+> A "fake IP" address is used as a key to look up the corresponding "FQDN" information.
+
+When a DNS request is sent to the DNS server, Clash allocates a free *fake IP address* in the fake IP address pool (a mapping table that manages mappings between the FQDN and "fake IP" address). Clash will then lookup the FQDN and check the GEOIP for the IP address, this is merely for the rules (like GEOIP). When a request to the said "fake IP" address is sent to Clash, Clash will establish a connection to the FQDN linked with the "fake IP" through a SOCKS5, Shadowsocks (or other protocols) server.
 
 # Proxy Groups
 TODO
