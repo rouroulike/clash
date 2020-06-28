@@ -374,7 +374,13 @@ When a DNS request is sent to the DNS server, Clash allocates a free *fake IP ad
 Clash will then lookup the FQDN and check the GEOIP for the IP address, this is merely for the rules (like GEOIP). When a request to the said "fake IP" address is sent to Clash, Clash establishs a connection to the FQDN linked with the "fake IP" through a SOCKS5, Shadowsocks (or other protocols) server.
 
 # Proxy Groups
-TODO
+Proxy Groups are groups of proxies that you can utilize some special features of Clash to manage and make use of.
+
+* `relay`: The request sent to this proxy group will be relayed through the specified proxy servers sequently. There's currently no UDP support on this. The specified proxy servers should not contain another relay.
+* `url-test`: Clash benchmarks each proxy servers in the list, by sending HTTP HEAD requests to a specified URL through these servers periodically. It's possible to set a maximum tolerance value, benchmarking interval and the target URL.
+* `fallback`: Clash periodically tests the availability of servers in the list with the same mechanism of `url-test`. The first available server will be used.
+* `load-balance`: The request to the same eTLD will be dialed with the same proxy.
+* `select`: The first server is by default used when Clash starts up. User can choose the server to use with the RESTful API. In this mode, you can hardcode servers in the config or use [Proxy Providers](https://github.com/Dreamacro/clash/wiki/Configuration#proxy-providers).
 
 # Proxy Providers
 TODO
