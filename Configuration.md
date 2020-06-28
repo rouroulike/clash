@@ -66,28 +66,45 @@ interface-name: en0
 #   '.dev': 127.0.0.1
 #   'alpha.clash.dev': '::1'
 
-# dns:
-  # enable: true # set true to enable dns (default is false)
+# DNS server settings
+# This section is optional. When not present, DNS server will be disabled.
+dns:
+  enable: false
+  listen: 0.0.0.0:53
   # ipv6: false # when false, response to AAAA questions will be empty
-  # listen: 0.0.0.0:53
-  # # default-nameserver: # resolve dns nameserver host, should fill pure IP
-  # #   - 114.114.114.114
-  # #   - 8.8.8.8
-  # enhanced-mode: redir-host # or fake-ip
-  # # fake-ip-range: 198.18.0.1/16 # if you don't know what it is, don't change it
-  # fake-ip-filter: # fake ip white domain list
+
+  # These nameservers are used to resolve the DNS nameserver hostnames below.
+  # Specify IP addresses only
+  default-nameserver:
+    - 114.114.114.114
+    - 8.8.8.8
+  enhanced-mode: redir-host # or fake-ip
+  # fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
+  
+  # Hostnames in this list will not be resolved with fake IPs
+  # i.e. questions to these domain names will always be answered with their
+  # real IP addresses
+  # fake-ip-filter:
   #   - '*.lan'
   #   - localhost.ptlogin2.qq.com
-  # nameserver:
-  #   - 114.114.114.114
-  #   - tls://dns.rubyfish.cn:853 # dns over tls
-  #   - https://1.1.1.1/dns-query # dns over https
-  # fallback: # concurrent request with nameserver, fallback used when GEOIP country isn't CN
-  #   - tcp://1.1.1.1
-  # fallback-filter:
-  #   geoip: true # default
-  #   ipcidr: # ips in these subnets will be considered polluted
-  #     - 240.0.0.0/4
+  
+  nameserver:
+    - 114.114.114.114 # default value
+    - 8.8.8.8 # default value
+    - tls://dns.rubyfish.cn:853 # DNS over TLS
+    - https://1.1.1.1/dns-query # DNS over HTTPS
+
+  # concurrent request with nameserver, fallback is used when GEOIP
+  # country isn't CN
+  fallback:
+    - tcp://1.1.1.1
+
+  fallback-filter:
+    geoip: true
+    # IP addresses in these subnets will be considered invalid
+    # and skipped when resolving
+    ipcidr:
+      - 240.0.0.0/4
 
 proxies:
   # Shadowsocks
