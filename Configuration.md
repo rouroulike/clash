@@ -92,7 +92,9 @@ dns:
   #   - '*.lan'
   #   - localhost.ptlogin2.qq.com
   
-  # Clash will answer the DNS question with the first result
+  # Supports UDP, TCP, DoT, DoH. You can specify the port to connect to.
+  # All DNS questions are sent directly to the nameserver, without proxies
+  # involved. Clash answers the DNS question with the first result gathered.
   nameserver:
     - 114.114.114.114 # default value
     - 8.8.8.8 # default value
@@ -106,9 +108,17 @@ dns:
   # fallback:
   #   - tcp://1.1.1.1
 
-  # IP addresses in the specified subnets will be considered invalid
-  # and skipped when resolving with fallback nameservers.
-  # This is a countermeasure against DNS pollution attacks
+  # If IP addresses resolved with servers in `nameservers` are in the specified
+  # subnets below, they are considered invalid and results from `fallback`
+  # servers are used instead.
+  #
+  # IP address resolved with servers in `nameserver` is used when
+  # `fallback-filter.geoip` is true and when GEOIP of the IP address is `CN`.
+  #
+  # If `fallback-filter.geoip` is false, results from `fallback` nameservers
+  # are always used, and answers from `nameservers` are discarded.
+  #
+  # This is a countermeasure against DNS pollution attacks.
   fallback-filter:
     geoip: true
     ipcidr:
