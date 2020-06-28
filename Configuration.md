@@ -385,7 +385,34 @@ Proxy Groups are groups of proxies that you can utilize some special features of
 * `select`: The first server is by default used when Clash starts up. User can choose the server to use with the RESTful API. In this mode, you can hardcode servers in the config or use [Proxy Providers](https://github.com/Dreamacro/clash/wiki/Configuration#proxy-providers).
 
 # Proxy Providers
-TODO
+Proxy Providers gives users power to load proxy server lists dynamically, instead of hardcoding them in the configuration file. There are currently two sources for a proxy provider to load server list from:
+
+* `http`: Clash loads the server list from a specified URL on startup. Clash periodically pulls the server list from remote if the `interval` option is set.
+* `file`: Clash loads the server list from a specified location on the filesystem on startup.
+
+Health check is available for both modes, and works exactly like `fallback` in Proxy Groups. The configuration format for the server list files are also exactly the same in the main configuration file:
+
+```yaml
+proxies:
+  - name: "ss1"
+    type: ss
+    server: server
+    port: 443
+    cipher: chacha20-ietf-poly1305
+    password: "password"
+
+  - name: "ss2"
+    type: ss
+    server: server
+    port: 443
+    cipher: chacha20-ietf-poly1305
+    password: "password"
+    plugin: obfs
+    plugin-opts:
+      mode: tls
+  
+  # ...
+```
 
 # Rules
 Available keywords:
