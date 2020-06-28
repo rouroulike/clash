@@ -390,7 +390,7 @@ Proxy Providers gives users power to load proxy server lists dynamically, instea
 * `http`: Clash loads the server list from a specified URL on startup. Clash periodically pulls the server list from remote if the `interval` option is set.
 * `file`: Clash loads the server list from a specified location on the filesystem on startup.
 
-Health check is available for both modes, and works exactly like `fallback` in Proxy Groups. The configuration format for the server list files are also exactly the same in the main configuration file:
+Health check is available for both modes, and works exactly like `fallback` in Proxy Groups. The configuration format for the server list files is also exactly the same in the main configuration file:
 
 ```yaml
 proxies:
