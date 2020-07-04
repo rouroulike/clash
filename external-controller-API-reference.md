@@ -2,6 +2,8 @@
 
 External Controller enables users to control Clash programmatically with the HTTP RESTful API. The third-party Clash GUIs are heavily based on this feature. Enable this feature by specifying an address in `external-controller`.
 
+> This documentation page is incomplete. Please visit http://clash.gitbook.io/doc/restful-api.
+
 # Table of Contents
 
 * [Getting real-time traffic data](#getting-real-time-traffic-data): `GET /traffic`
