@@ -65,7 +65,7 @@ Save as `docker-compose.yaml`, create Clash `config.yaml` in the same directory 
 $ docker-compose up -d
 ```
  
-To get Clash up. You can view the logs with:
+to get Clash up. You can view the logs with:
 
 ```
 $ docker-compose logs
