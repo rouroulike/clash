@@ -4,3 +4,4 @@
 * For `ss` nodes (remote servers), `obfs` and `obfs-host` are no longer valid fields. Use `plugin` and `plugin-opts` instead.
 * `FINAL` in rules is no longer valid. Use `MATCH` instead.
 * `SOURCE-IP-CIDR` in rules is no longer valid. Use `SRC-IP-CIDR` instead.
+* `experimental` is now deprecated. The former `experimental.interface-name` is now `interface-name`.
