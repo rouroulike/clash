@@ -422,7 +422,7 @@ proxies:
 Available keywords:
 
 * `DOMAIN`: `DOMAIN,www.google.com,policy` routes only `www.google.com` to `policy`.
-* `DOMAIN-SUFFIX`: `DOMAIN-KEYWORD,youtube.com,policy` routes any FQDN that ends with `youtube.com`, for example `www.youtube.com` or `foo.bar.youtube.com`, to `policy`. This works like the wildcard character `+`.
+* `DOMAIN-SUFFIX`: `DOMAIN-SUFFIX,youtube.com,policy` routes any FQDN that ends with `youtube.com`, for example `www.youtube.com` or `foo.bar.youtube.com`, to `policy`. This works like the wildcard character `+`.
 * `DOMAIN-KEYWORD`: `DOMAIN-KEYWORD,google,policy` routes any FQDN that contains `google`, for example `www.google.com` or `googleapis.com`, to `policy`.
 * `GEOIP`: `GEOIP,CN,policy` routes any requests to a China IP address to `policy`.
 * `IP-CIDR`: `IP-CIDR,127.0.0.0/8,DIRECT` routes any packets to `127.0.0.0/8` to the `DIRECT` policy.
