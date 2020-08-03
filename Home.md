@@ -1,7 +1,7 @@
 # Welcome
 Welcome to the official Wiki page for the Clash core project ("Clash"). There are currently two versions of Clash:
 * Clash: the software released at [Dreamacro/clash](https://github.com/Dreamacro/clash)
-* [Clash Premium](https://github.com/Dreamacro/clash/releases/tag/premium): close-sourced pre-built Clash binary with TUN support (it's free)
+* [Clash Premium](https://github.com/Dreamacro/clash/releases/tag/premium): close-sourced pre-built Clash binary with [TUN support and more](https://github.com/Dreamacro/clash/wiki/premium-core-features) (it's free)
 
 This wiki will cover both versions of Clash. 
 
@@ -24,7 +24,7 @@ $ file clash
 $ clash -v
 ```
 
-You can now move forward to the next chapters of this wiki in which we'll cover the configuration syntax of Clash.
+You can now move forward to [the next chapters of this wiki](https://github.com/Dreamacro/clash/wiki/configuration) in which we'll cover the configuration syntax of Clash.
 
 # The Developers
 There will be no Clash without the following incredible developers:
