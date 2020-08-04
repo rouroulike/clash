@@ -120,8 +120,8 @@ dns:
   # IP address resolved with servers in `nameserver` is used when
   # `fallback-filter.geoip` is true and when GEOIP of the IP address is `CN`.
   #
-  # If `fallback-filter.geoip` is false, results from `fallback` nameservers
-  # are always used, and answers from `nameservers` are discarded.
+  # If `fallback-filter.geoip` is false, results from `nameserver` nameservers
+  # are always used if not match `fallback-filter.ipcidr`.
   #
   # This is a countermeasure against DNS pollution attacks.
   fallback-filter:
