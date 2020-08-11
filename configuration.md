@@ -1,8 +1,8 @@
 # Introduction
 
-Clash uses [YAML](https://yaml.org), *YAML Ain't Markup Language*, for configuration files. YAML is designed to be easy to be read, be written and be interpreted by computers, and is commonly used for exactly configuration files. In this chapter, we'll cover the common features of Clash and how they should be used and configured.
+Clash uses [YAML](https://yaml.org), *YAML Ain't Markup Language*, for configuration files. YAML is designed to be easy to be read, be written, and be interpreted by computers, and is commonly used for exact configuration files. In this chapter, we'll cover the common features of Clash and how they should be used and configured.
 
-Clash works by opening HTTP, SOCKS5 or transparent proxy server on the local end. When a request, or say packet, comes in, Clash *routes* the packet to different remote servers ("nodes") with either VMess, Shadowsocks, Snell, Trojan, SOCKS5 or HTTP protocol.
+Clash works by opening HTTP, SOCKS5, or the transparent proxy server on the local end. When a request, or say packet, comes in, Clash *routes* the packet to different remote servers ("nodes") with either VMess, Shadowsocks, Snell, Trojan, SOCKS5 or HTTP protocol.
 
 # All Configuration Options
 
@@ -24,7 +24,7 @@ redir-port: 7892
 #  - "user1:pass1"
 #  - "user2:pass2"
 
-# Set to true to allow connections to local-end server from
+# Set to true to allow connections to the local-end server from
 # other LAN IP addresses
 allow-lan: false
 
@@ -67,7 +67,7 @@ interface-name: en0
 # when `dns.enhanced-mode` is `redir-host`.
 #
 # Wildcard hostnames are supported (e.g. *.clash.dev, *.foo.*.example.com)
-# Non-wildcard domain names has a higher priority than wildcard domain names
+# Non-wildcard domain names have a higher priority than wildcard domain names
 # e.g. foo.example.com > *.example.com > .example.com
 # P.S. +.foo.com equals to .foo.com and foo.com
 hosts:
@@ -76,11 +76,11 @@ hosts:
   # 'alpha.clash.dev': '::1'
 
 # DNS server settings
-# This section is optional. When not present, DNS server will be disabled.
+# This section is optional. When not present, the DNS server will be disabled.
 dns:
   enable: false
   listen: 0.0.0.0:53
-  # ipv6: false # when false, response to AAAA questions will be empty
+  # ipv6: false # when the false, response to AAAA questions will be empty
 
   # These nameservers are used to resolve the DNS nameserver hostnames below.
   # Specify IP addresses only
@@ -89,6 +89,7 @@ dns:
     - 8.8.8.8
   enhanced-mode: redir-host # or fake-ip
   fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
+  # use-hosts: true # lookup hosts and return IP record
   
   # Hostnames in this list will not be resolved with fake IPs
   # i.e. questions to these domain names will always be answered with their
@@ -296,7 +297,7 @@ proxy-groups:
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
 
-  # fallback select an available policy by priority. The availability is tested by accessing an URL, just like an auto url-test group.
+  # fallback selects an available policy by priority. The availability is tested by accessing an URL, just like an auto url-test group.
   - name: "fallback-auto"
     type: fallback
     proxies:
@@ -306,7 +307,7 @@ proxy-groups:
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
 
-  # load-balance: The request of the same eTLD will be dial on the same proxy.
+  # load-balance: The request of the same eTLD will be dial to the same proxy.
   - name: "load-balance"
     type: load-balance
     proxies:
@@ -317,7 +318,7 @@ proxy-groups:
     interval: 300
 
   # select is used for selecting proxy or proxy group
-  # you can use RESTful API to switch proxy, is recommended for use in GUI.
+  # you can use RESTful API to switch proxy is recommended for use in GUI.
   - name: Proxy
     type: select
     proxies:
@@ -388,28 +389,28 @@ $ clash -d /etc/clash
 The DNS server shipped with Clash aims to minimize DNS pollution attack impact and improve network performance. There are two modes for it to work: `redir-host` and `fake-ip`. The biggest difference between the two is how IP addresses are resolved and how the connections are established.
 
 ## redir-host
-This is more of a traditional way of how proxies work. In this mode, depending on the settings in `dns.nameserver`, `dns.fallback` and `dns.fallback-filter`, the destination FQDN are resolved in several different ways. The first result received by Clash DNS module will be sent back to the client. Client can then establish a connection to the said IP address through Clash.
+This is more of a traditional way of how proxies work. In this mode, depending on the settings in `dns.nameserver`, `dns.fallback` and `dns.fallback-filter`, the destination FQDN are resolved in several different ways. The first result received by Clash DNS module will be sent back to the client. The client can then establish a connection to the said IP address through Clash.
 
 ## fake-ip
-The concept of "fake IP" addresses is origined from [RFC 3089](https://tools.ietf.org/rfc/rfc3089):
+The concept of "fake IP" addresses is originated from [RFC 3089](https://tools.ietf.org/rfc/rfc3089):
 
 > A "fake IP" address is used as a key to look up the corresponding "FQDN" information.
 
 When a DNS request is sent to the DNS server, Clash allocates a free *fake IP address* in the fake IP address pool, a mapping table that manages mappings between the FQDN and "fake IP" address. Note that the IP addresses in the fake IP address pool should never be used in real communications. The default CIDR for the pool is a reserved IPv4 address space `198.18.0.1/16`, which can be changed in `dns.fake-ip-range`.
 
-Clash will then lookup the FQDN and check the GEOIP for the IP address, this is merely for the rules (like GEOIP). When a request to the said "fake IP" address is sent to Clash, Clash establishs a connection to the FQDN linked with the "fake IP" through a SOCKS5, Shadowsocks (or other protocols) server.
+Clash will then lookup the FQDN and check the GEOIP for the IP address, this is merely for the rules (like GEOIP). When a request to the said, "fake IP" address is sent to Clash, Clash establishes a connection to the FQDN linked with the "fake IP" through a SOCKS5, Shadowsocks (or other protocols) server.
 
 # Proxy Groups
 Proxy Groups are groups of proxies that you can utilize some special features of Clash to manage and make use of.
 
 * `relay`: The request sent to this proxy group will be relayed through the specified proxy servers sequently. There's currently no UDP support on this. The specified proxy servers should not contain another relay.
-* `url-test`: Clash benchmarks each proxy servers in the list, by sending HTTP HEAD requests to a specified URL through these servers periodically. It's possible to set a maximum tolerance value, benchmarking interval and the target URL.
+* `url-test`: Clash benchmarks each proxy servers in the list, by sending HTTP HEAD requests to a specified URL through these servers periodically. It's possible to set a maximum tolerance value, benchmarking interval, and the target URL.
 * `fallback`: Clash periodically tests the availability of servers in the list with the same mechanism of `url-test`. The first available server will be used.
 * `load-balance`: The request to the same eTLD will be dialed with the same proxy.
-* `select`: The first server is by default used when Clash starts up. User can choose the server to use with the RESTful API. In this mode, you can hardcode servers in the config or use [Proxy Providers](https://github.com/Dreamacro/clash/wiki/Configuration#proxy-providers).
+* `select`: The first server is by default used when Clash starts up. Users can choose the server to use with the RESTful API. In this mode, you can hardcode servers in the config or use [Proxy Providers](https://github.com/Dreamacro/clash/wiki/Configuration#proxy-providers).
 
 # Proxy Providers
-Proxy Providers gives users power to load proxy server lists dynamically, instead of hardcoding them in the configuration file. There are currently two sources for a proxy provider to load server list from:
+Proxy Providers give users the power to load proxy server lists dynamically, instead of hardcoding them in the configuration file. There are currently two sources for a proxy provider to load server list from:
 
 * `http`: Clash loads the server list from a specified URL on startup. Clash periodically pulls the server list from remote if the `interval` option is set.
 * `file`: Clash loads the server list from a specified location on the filesystem on startup.
@@ -442,8 +443,8 @@ proxies:
 Available keywords:
 
 * `DOMAIN`: `DOMAIN,www.google.com,policy` routes only `www.google.com` to `policy`.
-* `DOMAIN-SUFFIX`: `DOMAIN-SUFFIX,youtube.com,policy` routes any FQDN that ends with `youtube.com`, for example `www.youtube.com` or `foo.bar.youtube.com`, to `policy`. This works like the wildcard character `+`.
-* `DOMAIN-KEYWORD`: `DOMAIN-KEYWORD,google,policy` routes any FQDN that contains `google`, for example `www.google.com` or `googleapis.com`, to `policy`.
+* `DOMAIN-SUFFIX`: `DOMAIN-SUFFIX,youtube.com,policy` routes any FQDN that ends with `youtube.com`, for example, `www.youtube.com` or `foo.bar.youtube.com`, to `policy`. This works like the wildcard character `+`.
+* `DOMAIN-KEYWORD`: `DOMAIN-KEYWORD,google,policy` routes any FQDN that contains `google`, for example, `www.google.com` or `googleapis.com`, to `policy`.
 * `GEOIP`: `GEOIP,CN,policy` routes any requests to a China IP address to `policy`.
 * `IP-CIDR`: `IP-CIDR,127.0.0.0/8,DIRECT` routes any packets to `127.0.0.0/8` to the `DIRECT` policy.
 * `IP-CIDR6`: `IP-CIDR6,[2620:0:2d0:200::7/32],policy` routes any packets to `2620:0:2d0:200::7/32` to `policy`.
@@ -455,9 +456,9 @@ Available keywords:
 There are two additional special policies:
 
 * `DIRECT`: directly connects to the target without any proxies involved
-* `REJECT`: a blackhole for packets. Clash will not process any I/O to this policy.
+* `REJECT`: a black hole for packets. Clash will not process any I/O to this policy.
 
 A policy can be either `DIRECT`, `REJECT`, a proxy group or a proxy server.
 
 ## no-resolve
-`no-resolve` is an additional option for `GEOIP`, `IP-CIDR` or `IP-CIDR6` rules. Append `,no-resolve` to these rules to enable. Clash by default translate the domain names to IP addresses when encountering IP rules. Clash skips the IP rules with this option enabled when encountering packets that has a FQDN target.
+`no-resolve` is an additional option for `GEOIP`, `IP-CIDR`, or `IP-CIDR6` rules. Append `,no-resolve` to these rules to enable. Clash by default translates the domain names to IP addresses when encountering IP rules. Clash skips the IP rules with this option enabled when encountering packets that have an FQDN target.
