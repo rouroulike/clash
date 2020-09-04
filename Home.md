@@ -14,10 +14,9 @@ Clash requires Golang 1.13 or a higher version.
 
 ```
 $ go get -u -v github.com/Dreamacro/clash
-$ GOOS=darwin GOARCH=amd64 go build github.com/Dreamacro/clash
 ```
 
-No output indicates that the build was successful. You should get the executable binary in your current directory.
+The binary is built under $GOPATH/bin
 
 ```
 $ file clash
