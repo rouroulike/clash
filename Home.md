@@ -19,7 +19,6 @@ $ go get -u -v github.com/Dreamacro/clash
 The binary is built under $GOPATH/bin
 
 ```
-$ file clash
 $ clash -v
 ```
 
