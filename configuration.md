@@ -447,7 +447,7 @@ Available keywords:
 * `DOMAIN-KEYWORD`: `DOMAIN-KEYWORD,google,policy` routes any FQDN that contains `google`, for example, `www.google.com` or `googleapis.com`, to `policy`.
 * `GEOIP`: `GEOIP,CN,policy` routes any requests to a China IP address to `policy`.
 * `IP-CIDR`: `IP-CIDR,127.0.0.0/8,DIRECT` routes any packets to `127.0.0.0/8` to the `DIRECT` policy.
-* `IP-CIDR6`: `IP-CIDR6,[2620:0:2d0:200::7/32],policy` routes any packets to `2620:0:2d0:200::7/32` to `policy`.
+* `IP-CIDR6`: `IP-CIDR6,2620:0:2d0:200::7/32,policy` routes any packets to `2620:0:2d0:200::7/32` to `policy`.
 * `SRC-IP-CIDR`: `SRC-IP-CIDR,192.168.1.201/32,DIRECT` routes any packets **from** `192.168.1.201/32` to the `DIRECT` policy.
 * `SRC-PORT`: `SRC-PORT,80,policy` routes any packets **from** the port 80 to `policy`.
 * `DST-PORT`: `DST-PORT,80,policy` routes any packets **to** the port 80 to `policy`.
