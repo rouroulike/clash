@@ -307,7 +307,7 @@ proxy-groups:
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
 
-  # load-balance: The request of the same eTLD will be dial to the same proxy.
+  # load-balance: The request of the same eTLD+1 will be dial to the same proxy.
   - name: "load-balance"
     type: load-balance
     proxies:
@@ -406,7 +406,7 @@ Proxy Groups are groups of proxies that you can utilize some special features of
 * `relay`: The request sent to this proxy group will be relayed through the specified proxy servers sequently. There's currently no UDP support on this. The specified proxy servers should not contain another relay.
 * `url-test`: Clash benchmarks each proxy servers in the list, by sending HTTP HEAD requests to a specified URL through these servers periodically. It's possible to set a maximum tolerance value, benchmarking interval, and the target URL.
 * `fallback`: Clash periodically tests the availability of servers in the list with the same mechanism of `url-test`. The first available server will be used.
-* `load-balance`: The request to the same eTLD will be dialed with the same proxy.
+* `load-balance`: The request to the same eTLD+1 will be dialed with the same proxy.
 * `select`: The first server is by default used when Clash starts up. Users can choose the server to use with the RESTful API. In this mode, you can hardcode servers in the config or use [Proxy Providers](https://github.com/Dreamacro/clash/wiki/Configuration#proxy-providers).
 
 # Proxy Providers
