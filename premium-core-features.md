@@ -51,6 +51,20 @@ script:
       return "Proxy" # default policy for requests which are not matched by any other script
 ```
 
+**NOTE: If you want to use ip rules(IP-CIDR GEOIP), you need to manually resolve ip and assign it to metadata first**
+```python
+def main(ctx, metadata):
+    # ctx.rule_providers["geoip"].match(metadata) return false
+
+    ip = metadata["dst_ip"] = ctx.resolve_ip(metadata["host"])
+    if ip == "":
+        return "DIRECT"
+
+    # ctx.rule_providers["iprule"].match(metadata) return true
+
+    return "Proxy"
+```
+
 # Rule Providers
 Rule Providers is pretty much the same comparing to Proxy Providers. It enables users to load rules from external sources and overall cleaner configuration. This feature is currently Premium core only.
 
