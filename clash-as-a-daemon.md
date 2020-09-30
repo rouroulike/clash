@@ -40,7 +40,7 @@ $ journalctl -xe
 Credits to [ktechmidas](https://github.com/ktechmidas) for this guide. ([#754](https://github.com/Dreamacro/clash/issues/754))
 
 # Docker
-We recommend deploying Clash with [Docker Compose](https://docs.docker.com/compose/) if you're on Linux. If you're on macOS, you should use a third-party Clash variant [ClashX Pro](https://install.appcenter.ms/users/clashx/apps/clashx-pro/distribution_groups/public). ([#770](https://github.com/Dreamacro/clash/issues/770#issuecomment-650951876))
+We recommend deploying Clash with [Docker Compose](https://docs.docker.com/compose/) if you're on Linux. On macOS, you should use the third-party Clash variant [ClashX Pro](https://install.appcenter.ms/users/clashx/apps/clashx-pro/distribution_groups/public). ([#770](https://github.com/Dreamacro/clash/issues/770#issuecomment-650951876))
 
 ```yaml
 version: '3'
@@ -59,13 +59,13 @@ services:
     network_mode: "bridge" # or "host" on Linux
 ```
 
-Save as `docker-compose.yaml`, create Clash `config.yaml` in the same directory and run:
+Save as `docker-compose.yaml`, create `config.yaml` in the same directory and run below commands to get Clash up:
 
 ```
 $ docker-compose up -d
 ```
  
-to get Clash up. You can view the logs with:
+You can view the logs with:
 
 ```
 $ docker-compose logs
