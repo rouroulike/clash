@@ -1,5 +1,5 @@
 # Preface
-Clash is meant to be run in the background. Unfortunately, there's currently no elegant way to implement daemons with Golang. We can daemonize Clash with third-party tools.
+Clash is meant to be run in the background, there's currently no way to implement daemons elegantly with Golang. We can daemonize Clash with third-party tools.
 
 # systemd
 Copy Clash binary to `/usr/local/bin` and configuration files to `/etc/clash`:
