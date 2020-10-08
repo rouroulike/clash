@@ -129,6 +129,10 @@ dns:
     geoip: true
     ipcidr:
       # - 240.0.0.0/4
+    # domain:
+    #   - '+.google.com'
+    #   - '+.facebook.com'
+    #   - '+.youtube.com'
 
 proxies:
   # Shadowsocks
@@ -191,6 +195,21 @@ proxies:
     # ws-path: /path
     # ws-headers:
     #   Host: v2ray.com
+
+  - name: "vmess-h2"
+    type: vmess
+    server: server
+    port: 443
+    uuid: uuid
+    alterId: 32
+    cipher: auto
+    network: h2
+    tls: true
+    h2-opts:
+      host:
+        - http.example.com
+        - http-alt.example.com
+      path: /
   
   - name: "vmess-http"
     type: vmess
@@ -230,6 +249,7 @@ proxies:
     # password: password
     # tls: true # https
     # skip-cert-verify: true
+    # sni: custom.com
 
   # Snell
   # Beware that there's currently no UDP support yet
@@ -238,6 +258,7 @@ proxies:
     server: server
     port: 44046
     psk: yourpsk
+    # version: 2
     # obfs-opts:
       # mode: http # or tls
       # host: bing.com
