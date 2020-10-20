@@ -56,9 +56,10 @@ script:
 def main(ctx, metadata):
     # ctx.rule_providers["geoip"].match(metadata) return false
 
-    ip = metadata["dst_ip"] = ctx.resolve_ip(metadata["host"])
+    ip = ctx.resolve_ip(metadata["host"])
     if ip == "":
         return "DIRECT"
+    metadata["dst_ip"] = ip
 
     # ctx.rule_providers["iprule"].match(metadata) return true
 
