@@ -400,6 +400,13 @@ $ clash -d . # current directory
 $ clash -d /etc/clash
 ```
 
+You can use command-line option `-f` to specify a configuration:
+
+```
+$ clash -f ./config.yaml # current directory
+$ clash -f /etc/clash/config.yaml
+```
+
 # Syntax
 * IPv6 addresses should be wrapped with `[` and `]`. For example: `[aaaa::a8aa:ff:fe09:57d8]`.
 * Wildcard characters. Beware any domain with these characters should be wrapped with single-quotes `'`.
