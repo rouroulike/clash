@@ -13,8 +13,11 @@ port: 7890
 # Port of SOCKS5 proxy server on the local end
 socks-port: 7891
 
-# Transparent proxy server port for Linux and macOS
-redir-port: 7892
+# Transparent proxy server port for Linux and macOS (Redirect TCP and TProxy UDP)
+# redir-port: 7892
+
+# Transparent proxy server port for Linux (TProxy TCP and TProxy UDP)
+# tproxy-port: 7893
 
 # HTTP(S) and SOCKS5 server on the same port
 # mixed-port: 7890
@@ -315,6 +318,7 @@ proxy-groups:
       - ss2
       - vmess1
     # tolerance: 150
+    # lazy: true
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
 
@@ -337,11 +341,13 @@ proxy-groups:
       - vmess1
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
+    # strategy: consistent-hashing # or round-robin
 
   # select is used for selecting proxy or proxy group
   # you can use RESTful API to switch proxy is recommended for use in GUI.
   - name: Proxy
     type: select
+    # disable-udp: true
     proxies:
       - ss1
       - ss2
@@ -365,6 +371,7 @@ proxy-providers:
     health-check:
       enable: true
       interval: 600
+      # lazy: true
       url: http://www.gstatic.com/generate_204
   test:
     type: file
