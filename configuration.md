@@ -66,8 +66,7 @@ external-ui: folder
 # Outbound interface name
 interface-name: en0
 
-# Static hosts for DNS server and connection establishment, only works
-# when `dns.enhanced-mode` is `redir-host`.
+# Static hosts for DNS server and connection establishment (like /etc/hosts)
 #
 # Wildcard hostnames are supported (e.g. *.clash.dev, *.foo.*.example.com)
 # Non-wildcard domain names have a higher priority than wildcard domain names
@@ -486,6 +485,7 @@ Available keywords:
 * `SRC-IP-CIDR`: `SRC-IP-CIDR,192.168.1.201/32,DIRECT` routes any packets **from** `192.168.1.201/32` to the `DIRECT` policy.
 * `SRC-PORT`: `SRC-PORT,80,policy` routes any packets **from** the port 80 to `policy`.
 * `DST-PORT`: `DST-PORT,80,policy` routes any packets **to** the port 80 to `policy`.
+* `PROCESS-NAME`: `PROCESS-NAME,nc,DIRECT` routes the process `nc` to `DIRECT`. (support macOS、Linux、FreeBSD and Windows)
 * `MATCH`: `MATCH,policy` routes the rest of the packets to `policy`. This rule is **required**.
 
 There are two additional special policies:
