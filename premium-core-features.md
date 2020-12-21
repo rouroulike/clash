@@ -28,6 +28,23 @@ Then manually create the default route and DNS server. If your device already ha
 
 Enjoy! :)
 
+## Windows
+
+go to https://www.wintun.net and download the latest release, copy the right `wintun.dll` into Clash home directory
+
+> Temporary tun config
+
+```yaml
+tun:
+  enable: true
+  stack: gvisor # only gvisor
+  dns-hijack:
+    - 198.18.0.2:53 # when `fake-ip-range` is 198.18.0.1/16, should hijack 198.18.0.2:53
+  macOS-auto-route: true # auto set global route for Windows
+  macOS-auto-detect-interface: true # auto detect interface, conflict with `interface-name`
+```
+
+Finally, open clash
 
 # Script
 
