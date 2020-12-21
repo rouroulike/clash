@@ -34,6 +34,8 @@ go to https://www.wintun.net and download the latest release, copy the right `wi
 
 > Temporary tun config
 
+**NOTE: `macOS-auto-route` and `macOS-auto-detect-interface` is required, and only receive IPv4 traffic **
+
 ```yaml
 tun:
   enable: true
