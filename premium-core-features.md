@@ -83,6 +83,28 @@ def main(ctx, metadata):
     return "Proxy"
 ```
 
+the context and metadata
+```ts
+interface Metadata {
+  type: string # socks5、http
+  network: string # tcp
+  host: string
+  src_ip: string
+  src_port: string
+  dst_ip: string
+  dst_port: string
+}
+
+interface Context {
+  resolve_ip: (host: string) => string // ip string
+  resolve_process_name: (metadata: Metadata) => string
+  geoip: (ip: string) => string // country code
+  log: (log: string) => void
+  proxy_providers: Record<string, Array<{ name: string, alive: boolean, delay: number }>>
+  rule_providers: Record<string, { match: (metadata: Metadata) => boolean }>
+}
+```
+
 # Rule Providers
 Rule Providers is pretty much the same comparing to Proxy Providers. It enables users to load rules from external sources and overall cleaner configuration. This feature is currently Premium core only.
 
