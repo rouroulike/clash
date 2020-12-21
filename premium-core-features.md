@@ -86,8 +86,8 @@ def main(ctx, metadata):
 the context and metadata
 ```ts
 interface Metadata {
-  type: string # socks5、http
-  network: string # tcp
+  type: string // socks5、http
+  network: string // tcp
   host: string
   src_ip: string
   src_port: string
