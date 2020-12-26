@@ -12,8 +12,22 @@ tun:
   # dns-hijack:
   #   - 8.8.8.8:53
   #   - tcp://8.8.8.8:53
-  # macOS-auto-route: true # auto set global route
-  # macOS-auto-detect-interface: true # conflict with interface-name
+  macOS-auto-route: true # auto set global route
+  macOS-auto-detect-interface: true # conflict with interface-name
+```
+
+or
+
+```yaml
+interface-name: en0
+
+tun:
+  enable: true
+  stack: system # or gvisor
+  # dns-hijack:
+  #   - 8.8.8.8:53
+  #   - tcp://8.8.8.8:53
+  macOS-auto-route: true # auto set global route
 ```
 
 It's recommended to use `redir-host` mode for the DNS server.
@@ -51,7 +65,7 @@ Finally, open clash
 
 # Script
 
-Script enables user to programmatically select policy for the packets with more flexibility.
+Script enables users to programmatically select a policy for the packets with more flexibility.
 
 ```yaml
 mode: Script
