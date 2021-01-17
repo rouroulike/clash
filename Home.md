@@ -13,7 +13,7 @@ You can either grab the pre-built binaries of Clash from [https://github.com/Dre
 Clash requires Golang 1.13 or a higher version.
 
 ```
-$ go get -u -v github.com/Dreamacro/clash
+$ GO111MODULE=on go get -u -v github.com/Dreamacro/clash
 ```
 
 The binary is built under $GOPATH/bin
