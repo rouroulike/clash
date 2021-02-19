@@ -77,6 +77,12 @@ hosts:
   # '.dev': 127.0.0.1
   # 'alpha.clash.dev': '::1'
 
+profile:
+  # Store the `select` results in $HOME/.cache
+  # set false If you don't want this behavior
+  # when two different configurations have groups with the same name, the selected values are shared
+  store-selected: false
+
 # DNS server settings
 # This section is optional. When not present, the DNS server will be disabled.
 dns:
@@ -470,7 +476,7 @@ proxies:
     plugin-opts:
       mode: tls
   
-  # ...
+  # ……
 ```
 
 # Rules
