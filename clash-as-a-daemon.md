@@ -10,12 +10,15 @@ $ cp Country.mmdb /etc/clash/
 ```
 
 Create the systemd configuration file at `/etc/systemd/system/clash.service`:
-```
+```ini
 [Unit]
-Description=Clash Daemon
+Description=Clash daemon, A rule-based proxy in Go.
+After=network.target
 
 [Service]
-ExecStart=/usr/local/bin/clash -d /etc/clash/
+Type=simple
+Restart=always
+ExecStart=/usr/local/bin/clash -d /etc/clash
 
 [Install]
 WantedBy=multi-user.target
