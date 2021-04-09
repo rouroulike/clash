@@ -237,6 +237,20 @@ proxies:
     #   #   Connection:
     #   #     - keep-alive
 
+  - name: vmess-grpc
+    server: server
+    port: 443
+    type: vmess
+    uuid: uuid
+    alterId: 32
+    cipher: auto
+    network: grpc
+    tls: true
+    servername: example.com
+    # skip-cert-verify: true
+    grpc-opts:
+      grpc-service-name: "example"
+
   # socks5
   - name: "socks"
     type: socks5
@@ -283,6 +297,18 @@ proxies:
     #   - h2
     #   - http/1.1
     # skip-cert-verify: true
+
+  - name: trojan-grpc
+    server: server
+    port: 443
+    type: trojan
+    password: "example"
+    network: grpc
+    sni: example.com
+    # skip-cert-verify: true
+    udp: true
+    grpc-opts:
+      grpc-service-name: "example"
 
   # ShadowsocksR
   # The supported ciphers (encryption methods): all stream ciphers in ss
