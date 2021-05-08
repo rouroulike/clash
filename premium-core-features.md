@@ -12,8 +12,8 @@ tun:
   # dns-hijack:
   #   - 8.8.8.8:53
   #   - tcp://8.8.8.8:53
-  macOS-auto-route: true # auto set global route
-  macOS-auto-detect-interface: true # conflict with interface-name
+  auto-route: true # auto set global route
+  auto-detect-interface: true # conflict with interface-name
 ```
 
 or
@@ -27,7 +27,7 @@ tun:
   # dns-hijack:
   #   - 8.8.8.8:53
   #   - tcp://8.8.8.8:53
-  macOS-auto-route: true # auto set global route
+  auto-route: true # auto set global route
 ```
 
 It's recommended to use `redir-host` mode for the DNS server.
@@ -48,17 +48,17 @@ go to https://www.wintun.net and download the latest release, copy the right `wi
 
 > Temporary tun config
 
-**NOTE: `macOS-auto-route` and `macOS-auto-detect-interface` is required, and only receive IPv4 traffic **
+**NOTE: only receive IPv4 traffic **
 
 ```yaml
 tun:
   enable: true
-  stack: gvisor # only gvisor
+  stack: gvisor # or system
   dns-hijack:
     - 198.18.0.2:53 # when `fake-ip-range` is 198.18.0.1/16, should hijack 198.18.0.2:53
-  macOS-auto-route: true # auto set global route for Windows
+  auto-route: true # auto set global route for Windows
   # It is recommended to use `interface-name`
-  macOS-auto-detect-interface: true # auto detect interface, conflict with `interface-name`
+  auto-detect-interface: true # auto detect interface, conflict with `interface-name`
 ```
 
 Finally, open clash
