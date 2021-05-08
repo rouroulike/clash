@@ -5,7 +5,8 @@ The premium core is currently close-sourced. It's compiled on Dreamacro's Macboo
 
 Simply add the following to the main configuration:
 
-**NOTE: `auto-route` and `auto-detect-interface` only available on macOS and Windows, receive IPv4 traffic **
+**NOTE:**
+> `auto-route` and `auto-detect-interface` only available on macOS and Windows, receive IPv4 traffic
 
 ```yaml
 tun:
@@ -47,10 +48,6 @@ Enjoy! :)
 ## Windows
 
 go to https://www.wintun.net and download the latest release, copy the right `wintun.dll` into Clash home directory
-
-> Temporary tun config
-
-**NOTE: only receive IPv4 traffic **
 
 ```yaml
 tun:
