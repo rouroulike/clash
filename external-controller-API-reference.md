@@ -4,55 +4,124 @@ External Controller enables users to control Clash programmatically with the HTT
 
 > This documentation page is incomplete. Please visit http://clash.gitbook.io/doc/restful-api.
 
-# Table of Contents
+# ToC
 
-* [Getting real-time traffic data](#getting-real-time-traffic-data): `GET /traffic`
-* [Getting real-time logs](#getting-real-time-logs): `GET /logs`
-* [Getting all proxies](#getting-all-proxies): `GET /proxies`
-* [Getting a single proxy](#getting-a-single-proxy): `GET /proxies/:name`
-* [Getting the latency of a single proxy](#getting-the-latency-of-a-single-proxy): `GET /proxies/:name/delay`
-* [Switching the server of a selector group](#switching-the-server-of-a-selector-group): `PUT /proxies/:name`
-* [Getting the general configuration](#getting-the-general-configuration): `GET /configs`
-* [Updating the general configuration](#updating-the-general-configuration): `PATCH /configs`
-* [Reloading the configuration file](#reloading-the-configuration-file): `PUT /configs`
-* [Getting the currently effective rules](#getting-the-currently-effective-rules): `GET /rules`
+* [Authentication](#Authentication)
+* [RESTful API Documents](#RESTful%20API%20Documents)
+  * [Logs](###Logs)
+  * [Traffic](###Traffic)
+  * [Version](###Version)
+  * [Configs](###Configs)
+  * [Proxies](###Proxies)
+  * [Rules](###Rules)
+  * [Connections](###Connections)
+  * [Providers](###Providers)
 
-## Getting real-time traffic data
+# Authentication
+* External Controllers Accept `Bearer Tokens` as access authentication method.
+  * Use `Authorization: Bearer <Your Secret>` as your request header in order to pass authentic.
 
-`GET /traffic`
+# RESTful API Documents
 
-## Getting real-time logs
 
-`GET /logs`
+### Logs
 
-## Getting all proxies
+  * `/logs`
+    * Method: `GET`
+      * Full Path:  `GET /logs`
+      * Description: Get real-time logs
 
-`GET /proxies`
+### Traffic
 
-## Getting a single proxy
+  * `/traffic`
+    * Method: `GET`
+      * Full Path:  `GET /traffic`
+      * Description: Get real-time traffic data
 
-`GET /proxies/:name`
+### Version
 
-## Getting the latency of a single proxy
+  * `/version`
+    * Method: `GET`
+      * Full Path:  `GET /traffic`
+      * Description: Get clash version
 
-`GET /proxies/:name/delay`
+### Configs
 
-## Switching the server of a selector group
+  * `/configs`
+    * Method: `GET`
+      * Full Path:  `GET /configs`
+      * Description: Get base configs
+      
+    * Method: `PUT`
+      * Full Path: `PUT /configs`
+      * Description: Reloading base configs
 
-`PUT /proxies/:name`
+    * Method: `PATCH`
+      * Full Path:  `PATCH /logs`
+      * Description: Update base configs
 
-## Getting the general configuration
+### Proxies
 
-`GET /configs`
+  * `/proxies`
+    * Method: `GET`
+      * Full Path:  `GET /proxies`
+      * Description: Get proxies information
 
-## Updating the general configuration
+  * `/proxies/:name`
+    * Method: `GET`
+      * Full Path:  `GET /proxies/:name`
+      * Description: Get specific proxy information
 
-`PATCH /configs`
+    * Method: `PUT`
+      * Full Path:  `PUT /proxies/:name`
+      * Description: Select specific proxy
 
-## Reloading the configuration file
+  * `/proxies/:name/delay`
+    * Method: `GET`
+      * Full Path:  `GET /proxies/:name/delay`
+      * Description: Get specific proxy delay test information
 
-`PUT /configs`
+### Rules
 
-## Getting the currently effective rules
+  * `/rules`
+    * Method: `GET`
+      * Full Path:  `GET /rules`
+      * Description: Get rules information
 
-`GET /rules`
+### Connections
+
+  * `/connections`
+    * Method: `GET`
+      * Full Path:  `GET /connections`
+      * Description: Get connections information
+
+    * Method: `DELETE`
+      * Full Path:  `DELETE /connections`
+      * Description: Close all connections
+
+  * `/connections/:id`
+    * Method: `DELETE`
+      * Full Path:  `DELETE /connections/:id`
+      * Description: Close specific connection
+
+### Providers
+
+  * `/providers/proxies`
+    * Method: `GET`
+      * Full Path:  `GET /providers/proxies`
+      * Description: Get all proxies information for all proxy-providers
+
+  * `/providers/proxies/:name`
+    * Method: `GET`
+      * Full Path:  `GET /providers/proxies/:name`
+      * Description: Get proxies information for specific proxy-provider
+
+    * Method: `PUT`
+      * Full Path:  `PUT /providers/proxies/:name`
+      * Description: Select specific proxy-provider
+
+  * `/providers/proxies/:name/healthcheck`
+    * Method: `GET`
+      * Full Path:  `GET /providers/proxies/:name/healthcheck`
+      * Description: Get proxies information for specific proxy-provider
+
