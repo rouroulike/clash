@@ -484,6 +484,29 @@ Proxy Providers give users the power to load proxy server lists dynamically, ins
 Health check is available for both modes, and works exactly like `fallback` in Proxy Groups. The configuration format for the server list files is also exactly the same in the main configuration file:
 
 ```yaml
+# config.yaml
+proxy-providers:
+  provider1:
+    type: http
+    url: "url"
+    interval: 3600
+    path: ./provider1.yaml
+    health-check:
+      enable: true
+      interval: 600
+      # lazy: true
+      url: http://www.gstatic.com/generate_204
+  test:
+    type: file
+    path: /test.yaml
+    health-check:
+      enable: true
+      interval: 36000
+      url: http://www.gstatic.com/generate_204
+```
+
+```yaml
+# test.yaml
 proxies:
   - name: "ss1"
     type: ss
