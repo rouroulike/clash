@@ -141,6 +141,11 @@ dns:
     #   - '+.google.com'
     #   - '+.facebook.com'
     #   - '+.youtube.com'
+  
+  # Lookup domains via specific nameservers
+  # nameserver-policy:
+  #   'www.baidu.com': '114.114.114.114'
+  #   '+.internal.crop.com': '10.0.0.1'
 
 proxies:
   # Shadowsocks
