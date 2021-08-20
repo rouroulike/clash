@@ -10,7 +10,7 @@ This wiki will cover both versions of Clash.
 
 # Getting Started
 You can either grab the pre-built binaries of Clash from [https://github.com/Dreamacro/clash/releases](https://github.com/Dreamacro/clash/releases) or build locally.  
-Clash requires Golang 1.16 or a higher version.
+Clash requires Golang 1.17 or a higher version.
 
 ```
 $ go install github.com/Dreamacro/clash@latest
