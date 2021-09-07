@@ -121,6 +121,19 @@ interface Context {
 }
 ```
 
+# Script Shortcut
+
+use script on `rules`
+
+```yaml
+script:
+  shortcuts:
+    quic: network == 'udp' and dst_port == 443
+
+rules:
+  - SCRIPT,quic,REJECT
+```
+
 # Rule Providers
 Rule Providers is pretty much the same comparing to Proxy Providers. It enables users to load rules from external sources and overall cleaner configuration. This feature is currently Premium core only.
 
