@@ -19,7 +19,7 @@ socks-port: 7891
 # Transparent proxy server port for Linux (TProxy TCP and TProxy UDP)
 # tproxy-port: 7893
 
-# HTTP(S) and SOCKS5 server on the same port
+# HTTP(S) and SOCKS4(A)/SOCKS5 server on the same port
 # mixed-port: 7890
 
 # authentication of local SOCKS5/HTTP(S) server
