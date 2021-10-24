@@ -57,7 +57,7 @@ External Controller enables users to control Clash programmatically with the HTT
       * Description: Reloading base configs
 
     * Method: `PATCH`
-      * Full Path:  `PATCH /logs`
+      * Full Path:  `PATCH /configs`
       * Description: Update base configs
 
 ### Proxies
