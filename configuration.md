@@ -66,6 +66,9 @@ external-ui: folder
 # Outbound interface name
 interface-name: en0
 
+# fwmark on Linux only
+routing-mark: 6666
+
 # Static hosts for DNS server and connection establishment (like /etc/hosts)
 #
 # Wildcard hostnames are supported (e.g. *.clash.dev, *.foo.*.example.com)
@@ -82,6 +85,9 @@ profile:
   # set false If you don't want this behavior
   # when two different configurations have groups with the same name, the selected values are shared
   store-selected: false
+
+  # persistence fakeip
+  store-fake-ip: true
 
 # DNS server settings
 # This section is optional. When not present, the DNS server will be disabled.
@@ -308,17 +314,31 @@ proxies:
     #   - http/1.1
     # skip-cert-verify: true
 
+  - name: "trojan"
+    type: trojan
+    server: server
+    port: 443
+    password: yourpsk
+    # udp: true
+    # sni: example.com # aka server name
+    # alpn:
+    #   - h2
+    #   - http/1.1
+    # skip-cert-verify: true
+
   - name: trojan-grpc
     server: server
     port: 443
     type: trojan
     password: "example"
-    network: grpc
+    network: ws
     sni: example.com
     # skip-cert-verify: true
     udp: true
-    grpc-opts:
-      grpc-service-name: "example"
+    # ws-opts:
+      # path: /path
+      # headers:
+      #   Host: example.com
 
   # ShadowsocksR
   # The supported ciphers (encryption methods): all stream ciphers in ss
@@ -394,7 +414,14 @@ proxy-groups:
       - ss2
       - vmess1
       - auto
-  
+ 
+  # direct to another infacename
+  - name: en1
+    type: select
+    interface-name: en1
+    proxies:
+      - DIRECT 
+
   - name: UseProvider
     type: select
     use:
