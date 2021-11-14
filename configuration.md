@@ -314,19 +314,19 @@ proxies:
     #   - http/1.1
     # skip-cert-verify: true
 
-  - name: "trojan"
-    type: trojan
+  - name: trojan-grpc
     server: server
     port: 443
-    password: yourpsk
-    # udp: true
-    # sni: example.com # aka server name
-    # alpn:
-    #   - h2
-    #   - http/1.1
+    type: trojan
+    password: "example"
+    network: grpc
+    sni: example.com
     # skip-cert-verify: true
+    udp: true
+    grpc-opts:
+      grpc-service-name: "example"
 
-  - name: trojan-grpc
+  - name: trojan-ws
     server: server
     port: 443
     type: trojan
