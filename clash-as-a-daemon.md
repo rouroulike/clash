@@ -62,6 +62,11 @@ services:
       - "7890:7890"
       - "7891:7891"
       # - "8080:8080" # external controller (Restful API)
+    # # TUN
+    # cap_add:
+    #   - NET_ADMIN
+    # devices:
+    #   - /dev/net/tun
     restart: unless-stopped
     network_mode: "bridge" # or "host" on Linux
 ```
