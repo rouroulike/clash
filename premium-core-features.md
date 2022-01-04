@@ -125,6 +125,8 @@ interface Context {
 
 use script on `rules`
 
+**NOTE: `src_port` and `dst_port` are number**
+
 ```yaml
 script:
   shortcuts:
