@@ -42,7 +42,7 @@ External Controller enables users to control Clash programmatically with the HTT
 
   * `/version`
     * Method: `GET`
-      * Full Path:  `GET /traffic`
+      * Full Path:  `GET /version`
       * Description: Get clash version
 
 ### Configs
