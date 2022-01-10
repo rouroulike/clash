@@ -207,3 +207,12 @@ rules:
   - RULE-SET,apple,REJECT
   - RULE-SET,microsoft,policy
 ```
+
+# Tracing
+
+https://github.com/Dreamacro/clash-tracing
+
+```yaml
+profile:
+    tracing: true
+```
