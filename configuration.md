@@ -415,10 +415,11 @@ proxy-groups:
       - vmess1
       - auto
  
-  # direct to another infacename
+  # direct to another infacename or fwmark, also supported on proxy
   - name: en1
     type: select
     interface-name: en1
+    routing-mark: 6667
     proxies:
       - DIRECT 
 
