@@ -6,7 +6,7 @@ The premium core is currently close-sourced. It's compiled on Dreamacro's Macboo
 Simply add the following to the main configuration:
 
 **NOTE:**
-> `auto-route` and `auto-detect-interface` only available on macOS and Windows, receive IPv4 traffic
+> `auto-route` and `auto-detect-interface` only available on macOS, Windows and Linux, receive IPv4 traffic
 
 ```yaml
 tun:
@@ -137,7 +137,7 @@ rules:
 ```
 
 # Rule Providers
-Rule Providers is pretty much the same comparing to Proxy Providers. It enables users to load rules from external sources and overall cleaner configuration. This feature is currently Premium core only.
+Rule Providers are pretty much the same compared to Proxy Providers. It enables users to load rules from external sources and overall cleaner configuration. This feature is currently Premium core only.
 
 To define a Rule Provider, add the `rule-providers` field to the main configuration:
 
