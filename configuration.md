@@ -101,7 +101,7 @@ dns:
   default-nameserver:
     - 114.114.114.114
     - 8.8.8.8
-  enhanced-mode: redir-host # or fake-ip
+  enhanced-mode: fake-ip # or redir-host (not recommended)
   fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
   # use-hosts: true # lookup hosts and return IP record
   
@@ -492,7 +492,7 @@ $ clash -f /etc/clash/config.yaml
 # DNS
 The DNS server shipped with Clash aims to minimize DNS pollution attack impact and improve network performance. There are two modes for it to work: `redir-host` and `fake-ip`. The biggest difference between the two is how IP addresses are resolved and how the connections are established.
 
-## redir-host
+## redir-host (not recommended)
 This is more of a traditional way of how proxies work. In this mode, depending on the settings in `dns.nameserver`, `dns.fallback` and `dns.fallback-filter`, the destination FQDN are resolved in several different ways. The first result received by Clash DNS module will be sent back to the client. The client can then establish a connection to the said IP address through Clash.
 
 ## fake-ip
