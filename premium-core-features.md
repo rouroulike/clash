@@ -7,6 +7,7 @@ Simply add the following to the main configuration:
 
 **NOTE:**
 > `auto-route` and `auto-detect-interface` only available on macOS, Windows and Linux, receive IPv4 traffic
+> TUN device also works on Android, but its control device is `/dev/tun` instead of `/dev/net/tun`, you need to create a symbolic link first. eg. `ln -sf /dev/tun /dev/net/tun`
 
 ```yaml
 tun:
