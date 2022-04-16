@@ -5,9 +5,11 @@ The premium core is currently close-sourced. It's compiled on Dreamacro's Macboo
 
 Simply add the following to the main configuration:
 
+**TIPS:**
+> TUN device also works on Android, but its control device is `/dev/tun` instead of `/dev/net/tun`, you need to create a symbolic link first. eg. `ln -sf /dev/tun /dev/net/tun` 
+
 **NOTE:**
-> `auto-route` and `auto-detect-interface` only available on macOS, Windows and Linux, receive IPv4 traffic  
-> TUN device also works on Android, but its control device is `/dev/tun` instead of `/dev/net/tun`, you need to create a symbolic link first. eg. `ln -sf /dev/tun /dev/net/tun`  
+> `auto-route` and `auto-detect-interface` only available on macOS, Windows, Linux and Android, receive IPv4 traffic  
 
 ```yaml
 tun:
