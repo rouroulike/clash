@@ -18,6 +18,8 @@ tun:
   # dns-hijack:
   #   - 8.8.8.8:53
   #   - tcp://8.8.8.8:53
+  #   - any:53
+  #   - tcp://any:53
   auto-route: true # auto set global route
   auto-detect-interface: true # conflict with interface-name
 ```
@@ -218,4 +220,14 @@ https://github.com/Dreamacro/clash-tracing
 ```yaml
 profile:
     tracing: true
+```
+
+# eBPF
+
+It requires [kernel support](https://github.com/iovisor/bcc/blob/master/INSTALL.md#kernel-configuration), only hook traffic of the egress NIC and conflict with `auto-route`
+
+```yaml
+ebpf:
+  redirect-to-tun:
+    - eth0
 ```
