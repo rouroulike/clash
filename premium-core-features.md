@@ -38,7 +38,7 @@ tun:
   auto-route: true # auto set global route
 ```
 
-It's recommended to use `redir-host` mode for the DNS server.
+It's recommended to use `fake-ip` mode for the DNS server.
 
 Clash needs elevated permission to create TUN device:
 
