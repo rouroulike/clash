@@ -141,6 +141,15 @@ rules:
   - SCRIPT,quic,REJECT
 ```
 
+### Functions
+
+```ts
+type resolve_ip = (host: string) => string // ip string
+type in_cidr = (ip: string, cidr: string) => boolean // ip in cidr
+type geoip = (ip: string) => string // country code
+type match_provider = (name: string) => boolean // in rule provider
+```
+
 # Rule Providers
 Rule Providers are pretty much the same compared to Proxy Providers. It enables users to load rules from external sources and overall cleaner configuration. This feature is currently Premium core only.
 
