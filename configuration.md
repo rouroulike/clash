@@ -121,6 +121,7 @@ dns:
     - tls://dns.rubyfish.cn:853 # DNS over TLS
     - https://1.1.1.1/dns-query # DNS over HTTPS
     - dhcp://en0 # dns from dhcp
+    # - '8.8.8.8#en0'
 
   # When `fallback` is present, the DNS server will send concurrent requests
   # to the servers in this section along with servers in `nameservers`.
@@ -128,6 +129,7 @@ dns:
   # is not `CN`.
   # fallback:
   #   - tcp://1.1.1.1
+  #   - 'tcp://1.1.1.1#en0'
 
   # If IP addresses resolved with servers in `nameservers` are in the specified
   # subnets below, they are considered invalid and results from `fallback`
