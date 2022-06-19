@@ -240,3 +240,22 @@ ebpf:
   redirect-to-tun:
     - eth0
 ```
+
+# Auto redir
+
+Use Linux kernel nftables feature on pure Go. It can be replaced with `redir-port` (TCP) without any network config.
+
+It's recommended to work with TUN to handle UDP traffic. It improves the network throughput performance of some low performance devices compared to using exclusively TUN.
+
+```yaml
+interface-name: en0
+auto-redir:
+  enable: true
+  auto-route: true
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+    - any:53
+  auto-route: true
+```
