@@ -24,6 +24,12 @@ ExecStart=/usr/local/bin/clash -d /etc/clash
 WantedBy=multi-user.target
 ```
 
+After that you're supposed to reload systemd:
+
+```
+$ systemctl daemon-reload
+```
+
 Launch clashd on system startup with:
 ```
 $ systemctl enable clash
