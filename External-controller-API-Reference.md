@@ -19,7 +19,7 @@ External Controller enables users to control Clash programmatically with the HTT
 
 # Authentication
 * External Controllers Accept `Bearer Tokens` as access authentication method.
-  * Use `Authorization: Bearer <Your Secret>` as your request header in order to pass authentic.
+  * Use `Authorization: Bearer <Your Secret>` as your request header in order to pass credentials.
 
 # RESTful API Documents
 
