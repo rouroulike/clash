@@ -1,7 +1,7 @@
 # Welcome
-Welcome to the official Wiki page for the Clash core project ("Clash"). There are currently two versions of Clash:
-* Clash: the software released at [Dreamacro/clash](https://github.com/Dreamacro/clash)
-* [Clash Premium](https://github.com/Dreamacro/clash/releases/tag/premium): close-sourced pre-built Clash binary with [TUN support and more](https://github.com/Dreamacro/clash/wiki/premium-core-features) (it's free)
+Welcome to the official Wiki page of the Clash core project ("Clash"). There are currently two versions of Clash:
+* Clash: the open-source software released at [Dreamacro/clash](https://github.com/Dreamacro/clash)
+* [Clash Premium](https://github.com/Dreamacro/clash/releases/tag/premium): proprietary Clash binary with [TUN support and more](https://github.com/Dreamacro/clash/wiki/premium-core-features) (zero of charge)
 
 This wiki will cover both versions of Clash. 
 
@@ -10,6 +10,7 @@ This wiki will cover both versions of Clash.
 
 # Getting Started
 You can either grab the pre-built binaries of Clash from [https://github.com/Dreamacro/clash/releases](https://github.com/Dreamacro/clash/releases) or build locally.  
+
 Clash requires Golang 1.18 or a higher version.
 
 ```
@@ -32,9 +33,11 @@ There will be no Clash without the following incredible developers:
 * [Duament](https://github.com/duament)
 * [Fndroid](https://github.com/Fndroid)
 * [Kr328](https://github.com/kr328)
+* ... and more
 
 You can find the full list of contributors to this repository at [https://github.com/Dreamacro/clash/graphs/contributors](https://github.com/Dreamacro/clash/graphs/contributors).
 
 # License
 This software is released under the [GPL-3.0](https://github.com/Dreamacro/clash/blob/master/LICENSE) open-source license.  
+
 > Fun fact: before Oct '19, Clash was licensed under the MIT license.
