@@ -1,7 +1,5 @@
-# Use clash as a library
+If clash does not fit your own usage, you can use Clash in your own Golang code.
 
-
-If clash does not fit your own usage, you can use clash as a library.
 There is already basic support:
 
 ```go
