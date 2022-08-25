@@ -1,7 +1,7 @@
 # Introduction
-The premium core is currently close-sourced. It's compiled on Dreamacro's Macbook.
+The Premium core is proprietary and compiled on Dreamacro's Macbook.
 
-# TUN device
+## TUN device
 
 Simply add the following to the main configuration:
 
@@ -50,7 +50,7 @@ Then manually create the default route and DNS server. If your device already ha
 
 Enjoy! :)
 
-## Windows
+### Windows
 
 go to https://www.wintun.net and download the latest release, copy the right `wintun.dll` into Clash home directory
 
@@ -67,7 +67,7 @@ tun:
 
 Finally, open clash
 
-# Script
+## Script
 
 Script enables users to programmatically select a policy for the packets with more flexibility.
 
@@ -126,7 +126,7 @@ interface Context {
 }
 ```
 
-# Script Shortcut
+## Script Shortcut
 
 use script on `rules`
 
@@ -150,7 +150,7 @@ type geoip = (ip: string) => string // country code
 type match_provider = (name: string) => boolean // in rule provider
 ```
 
-# Rule Providers
+## Rule Providers
 Rule Providers are pretty much the same compared to Proxy Providers. It enables users to load rules from external sources and overall cleaner configuration. This feature is currently Premium core only.
 
 To define a Rule Provider, add the `rule-providers` field to the main configuration:
@@ -171,7 +171,7 @@ rule-providers:
 
 There are three behavior types available:
 
-## `domain`
+### `domain`
 
 ```yaml
 payload:
@@ -180,7 +180,7 @@ payload:
   - 'books.itunes.apple.com'
 ```
 
-## `ipcidr`
+### `ipcidr`
 
 ```yaml
 payload:
@@ -188,7 +188,7 @@ payload:
   - '10.0.0.0.1/32'
 ```
 
-## `classical`
+### `classical`
 
 ```yaml
 payload:
@@ -222,7 +222,7 @@ rules:
   - RULE-SET,microsoft,policy
 ```
 
-# Tracing
+## Tracing
 
 https://github.com/Dreamacro/clash-tracing
 
@@ -231,7 +231,7 @@ profile:
     tracing: true
 ```
 
-# eBPF
+## eBPF
 
 It requires [kernel support](https://github.com/iovisor/bcc/blob/master/INSTALL.md#kernel-configuration), only hook traffic of the egress NIC and conflict with `auto-route`
 
@@ -241,7 +241,7 @@ ebpf:
     - eth0
 ```
 
-# Auto redir
+## Auto redir
 
 Use Linux kernel nftables feature on pure Go. It can be replaced with `redir-port` (TCP) without any network config.
 
