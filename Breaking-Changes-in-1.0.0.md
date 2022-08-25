@@ -5,3 +5,5 @@
 * `FINAL` in rules is no longer valid. Use `MATCH` instead.
 * `SOURCE-IP-CIDR` in rules is no longer valid. Use `SRC-IP-CIDR` instead.
 * `experimental` is now deprecated. The former `experimental.interface-name` is now `interface-name`.
+
+For more version history, look at the release notes. I think Dreamacro spent a lot of time to write them. 😆 
