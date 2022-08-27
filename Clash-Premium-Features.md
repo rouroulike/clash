@@ -1,5 +1,5 @@
 # Introduction
-The Premium core is proprietary and compiled on Dreamacro's Macbook.
+The Premium core is proprietary, built on an internal CI pipeline.
 
 ## TUN device
 
