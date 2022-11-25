@@ -1,6 +1,25 @@
 # Introduction
 The Premium core is proprietary, built on an internal CI pipeline.
 
+## Proxy
+Due to the dependency on gvisor, wireguard is currently only available in premium
+
+```yaml
+proxies:
+  - name: "wg"
+    type: wireguard
+    server: 127.0.0.1
+    port: 443
+    ip: 127.0.0.1
+    # ipv6: your_ipv6
+    private-key: eCtXsJZ27+4PbhDkHnB923tkUn2Gj59wZw5wFA75MnU=
+    public-key: Cr8hWlKvtDt7nrvf+f0brNQQzabAqrjfBvas9pmowjo=
+    # preshared-key: base64
+    # dns: [1.1.1.1, 8.8.8.8]
+    # mtu: 1420
+    udp: true
+```
+
 ## TUN device
 
 Simply add the following to the main configuration:
@@ -119,6 +138,7 @@ interface Metadata {
 interface Context {
   resolve_ip: (host: string) => string // ip string
   resolve_process_name: (metadata: Metadata) => string
+  resolve_process_path: (metadata: Metadata) => string
   geoip: (ip: string) => string // country code
   log: (log: string) => void
   proxy_providers: Record<string, Array<{ name: string, alive: boolean, delay: number }>>
@@ -148,6 +168,8 @@ type resolve_ip = (host: string) => string // ip string
 type in_cidr = (ip: string, cidr: string) => boolean // ip in cidr
 type geoip = (ip: string) => string // country code
 type match_provider = (name: string) => boolean // in rule provider
+type resolve_process_name = () => string // find process name (curl .e.g)
+type resolve_process_path = () => string // find process path (/usr/bin/curl .e.g)
 ```
 
 ## Rule Providers
