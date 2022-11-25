@@ -531,6 +531,7 @@ proxy-providers:
     url: "url"
     interval: 3600
     path: ./provider1.yaml
+    # filter: 'a|b' # golang regex string
     health-check:
       enable: true
       interval: 600
