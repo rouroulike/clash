@@ -10,7 +10,7 @@ proxies:
     type: wireguard
     server: 127.0.0.1
     port: 443
-    ip: 127.0.0.1
+    ip: 172.16.0.2
     # ipv6: your_ipv6
     private-key: eCtXsJZ27+4PbhDkHnB923tkUn2Gj59wZw5wFA75MnU=
     public-key: Cr8hWlKvtDt7nrvf+f0brNQQzabAqrjfBvas9pmowjo=
