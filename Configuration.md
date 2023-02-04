@@ -29,13 +29,13 @@ socks-port: 7891
 
 # Set to true to allow connections to the local-end server from
 # other LAN IP addresses
-allow-lan: false
+# allow-lan: false
 
 # This is only applicable when `allow-lan` is `true`
 # '*': bind all IP addresses
 # 192.168.122.11: bind a single IPv4 address
 # "[aaaa::a8aa:ff:fe09:57d8]": bind a single IPv6 address
-bind-address: '*'
+# bind-address: '*'
 
 # Clash router working mode
 # rule: rule-based packet routing
@@ -45,10 +45,10 @@ mode: rule
 
 # Clash by default prints logs to STDOUT
 # info / warning / error / debug / silent
-log-level: info
+# log-level: info
 
 # When set to false, resolver won't translate hostnames to IPv6 addresses
-ipv6: false
+# ipv6: false
 
 # RESTful web API listening address
 external-controller: 127.0.0.1:9090
@@ -56,7 +56,7 @@ external-controller: 127.0.0.1:9090
 # A relative path to the configuration directory or an absolute path to a
 # directory in which you put some static web resource. Clash core will then
 # serve it at `http://{{external-controller}}/ui`.
-external-ui: folder
+# external-ui: folder
 
 # Secret for the RESTful API (optional)
 # Authenticate by spedifying HTTP header `Authorization: Bearer ${secret}`
@@ -64,10 +64,10 @@ external-ui: folder
 # secret: ""
 
 # Outbound interface name
-interface-name: en0
+# interface-name: en0
 
 # fwmark on Linux only
-routing-mark: 6666
+# routing-mark: 6666
 
 # Static hosts for DNS server and connection establishment (like /etc/hosts)
 #
