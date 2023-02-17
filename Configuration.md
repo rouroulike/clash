@@ -101,7 +101,7 @@ dns:
   default-nameserver:
     - 114.114.114.114
     - 8.8.8.8
-  enhanced-mode: fake-ip # or redir-host (not recommended)
+  # enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
   # use-hosts: true # lookup hosts and return IP record
   
