@@ -502,10 +502,7 @@ $ clash -f /etc/clash/config.yaml
   * `+`: multi-level wildcard character. `+.google.com` matches `google.com`, `www.google.com` and `foo.bar.google.com`. This works exactly like `DOMAIN-SUFFIX`.
 
 # DNS
-The DNS server shipped with Clash aims to minimize DNS pollution attack impact and improve network performance. There are two modes for it to work: `redir-host` and `fake-ip`. The biggest difference between the two is how IP addresses are resolved and how the connections are established.
-
-## redir-host (not recommended)
-This is more of a traditional way of how proxies work. In this mode, depending on the settings in `dns.nameserver`, `dns.fallback` and `dns.fallback-filter`, the destination FQDN are resolved in several different ways. The first result received by Clash DNS module will be sent back to the client. The client can then establish a connection to the said IP address through Clash.
+The DNS server shipped with Clash aims to minimize DNS pollution attack impact and improve network performance.
 
 ## fake-ip
 The concept of "fake IP" addresses is originated from [RFC 3089](https://tools.ietf.org/rfc/rfc3089):
