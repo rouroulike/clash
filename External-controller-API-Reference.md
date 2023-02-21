@@ -125,3 +125,13 @@ External Controller enables users to control Clash programmatically with the HTT
       * Full Path:  `GET /providers/proxies/:name/healthcheck`
       * Description: Get proxies information for specific proxy-provider
 
+### DNS Query
+
+- `/dns/query`
+  - Method: `GET`
+  - Full Path: `GET /dns/query?name={name}[&type={type}]`
+  - Description: Get DNS query data for a specified name and type.
+  - Parameters:
+    - `name` (required): The domain name to query.
+    - `type` (optional): The DNS record type to query (e.g., A, MX, CNAME, etc.). Defaults to `A` if not provided.
+  - Example: `GET /dns/query?name=example.com&type=A`
