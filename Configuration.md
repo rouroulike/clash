@@ -75,19 +75,19 @@ external-controller: 127.0.0.1:9090
 # Non-wildcard domain names have a higher priority than wildcard domain names
 # e.g. foo.example.com > *.example.com > .example.com
 # P.S. +.foo.com equals to .foo.com and foo.com
-hosts:
+# hosts:
   # '*.clash.dev': 127.0.0.1
   # '.dev': 127.0.0.1
   # 'alpha.clash.dev': '::1'
 
-profile:
+# profile:
   # Store the `select` results in $HOME/.config/clash/.cache
   # set false If you don't want this behavior
   # when two different configurations have groups with the same name, the selected values are shared
-  store-selected: false
+  # store-selected: true
 
   # persistence fakeip
-  store-fake-ip: true
+  # store-fake-ip: false
 
 # DNS server settings
 # This section is optional. When not present, the DNS server will be disabled.
