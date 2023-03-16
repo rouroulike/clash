@@ -29,7 +29,8 @@ Simply add the following to the main configuration:
 > TUN device also works on Android, but its control device is `/dev/tun` instead of `/dev/net/tun`, you need to create a symbolic link first. eg. `ln -sf /dev/tun /dev/net/tun` 
 
 **NOTE:**
-> `auto-route` and `auto-detect-interface` only available on macOS, Windows, Linux and Android, receive IPv4 traffic  
+> `auto-route` and `auto-detect-interface` only available on macOS, Windows, Linux and Android, receive IPv4 traffic.
+> if `system dns` is a private ip may lead to dns-hijack failure. Because `auto-route` will not capture private network traffics.
 
 ```yaml
 tun:
