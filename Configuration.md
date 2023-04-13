@@ -413,13 +413,14 @@ proxy-groups:
   - name: Proxy
     type: select
     # disable-udp: true
+    # filter: 'someregex'
     proxies:
       - ss1
       - ss2
       - vmess1
       - auto
  
-  # direct to another infacename or fwmark, also supported on proxy
+  # direct to another interfacename or fwmark, also supported on proxy
   - name: en1
     type: select
     interface-name: en1
