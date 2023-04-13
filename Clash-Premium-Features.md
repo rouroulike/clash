@@ -184,7 +184,8 @@ rule-providers:
   apple:
     behavior: "domain"
     type: http
-    url: "url"
+    url: "URL"
+    # format: 'yaml' # or 'text'
     interval: 3600
     path: ./apple.yaml
   microsoft:
@@ -197,6 +198,7 @@ There are three behavior types available:
 
 ### `domain`
 
+yaml:
 ```yaml
 payload:
   - '.blogger.com'
@@ -204,16 +206,33 @@ payload:
   - 'books.itunes.apple.com'
 ```
 
+text:
+```
+# comment
+.blogger.com
+*.*.microsoft.com
+books.itunes.apple.com
+```
+
 ### `ipcidr`
 
+yaml
 ```yaml
 payload:
   - '192.168.1.0/24'
   - '10.0.0.0.1/32'
 ```
 
+text:
+```
+# comment
+192.168.1.0/24
+10.0.0.0.1/32
+```
+
 ### `classical`
 
+yaml:
 ```yaml
 payload:
   - DOMAIN-SUFFIX,google.com
@@ -225,6 +244,19 @@ payload:
   - DST-PORT,80
   - SRC-PORT,7777
   # MATCH is not necessary here
+```
+
+text:
+```
+# comment
+DOMAIN-SUFFIX,google.com
+DOMAIN-KEYWORD,google
+DOMAIN,ad.com
+SRC-IP-CIDR,192.168.1.201/32
+IP-CIDR,127.0.0.0/8
+GEOIP,CN
+DST-PORT,80
+SRC-PORT,7777
 ```
 
 ```yaml
