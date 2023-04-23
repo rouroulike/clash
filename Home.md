@@ -1,7 +1,7 @@
 # Welcome
 Welcome to the official Wiki page of the Clash core project ("Clash"). There are currently two versions of Clash:
 * Clash: the open-source software released at [Dreamacro/clash](https://github.com/Dreamacro/clash)
-* [Clash Premium](https://github.com/Dreamacro/clash/releases/tag/premium): proprietary Clash binary with [TUN support and more](https://github.com/Dreamacro/clash/wiki/premium-core-features) (zero of charge)
+* [Clash Premium](https://github.com/Dreamacro/clash/releases/tag/premium): proprietary Clash binary with [TUN support and more](https://github.com/Dreamacro/clash/wiki/Clash-Premium-Features) (zero of charge)
 
 This wiki will cover both versions of Clash. 
 
