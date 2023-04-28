@@ -1,4 +1,4 @@
-# Time complexity of rule matching
+## Time complexity of rule matching
 Refer to this discussion: https://github.com/Dreamacro/clash/issues/422
 
 ## error: unsupported rule type RULE-SET
