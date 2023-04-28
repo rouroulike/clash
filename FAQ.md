@@ -1,5 +1,12 @@
+# Which release should I use for my system?
+* NETGEAR WNDR3700v2: mips-hardfloat [#846](https://github.com/Dreamacro/clash/issues/846)
+* NETGEAR WNDR3800: mips-softfloat [#579](https://github.com/Dreamacro/clash/issues/579)
+* ASUS RT-AC5300: armv5 [#2356](https://github.com/Dreamacro/clash/issues/2356)
+* MediaTek MT7620A, MT7621A: mipsle-softfloat ([#136](https://github.com/Dreamacro/clash/issues/136))
+* mips_24kc: [#192](https://github.com/Dreamacro/clash/issues/192)
+
 ## Time complexity of rule matching
-Refer to this discussion: https://github.com/Dreamacro/clash/issues/422
+Refer to this discussion: [#422](https://github.com/Dreamacro/clash/issues/422)
 
 ## error: unsupported rule type RULE-SET
 
