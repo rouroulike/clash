@@ -1,4 +1,4 @@
-# Which release should I use for my system?
+## Which release should I use for my system?
 * NETGEAR WNDR3700v2: mips-hardfloat [#846](https://github.com/Dreamacro/clash/issues/846)
 * NETGEAR WNDR3800: mips-softfloat [#579](https://github.com/Dreamacro/clash/issues/579)
 * ASUS RT-AC5300: armv5 [#2356](https://github.com/Dreamacro/clash/issues/2356)
