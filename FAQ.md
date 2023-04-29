@@ -21,6 +21,10 @@ The official Clash core project will not implement/fix these things:
 ## Time complexity of rule matching
 Refer to this discussion: [#422](https://github.com/Dreamacro/clash/issues/422)
 
+## Clash Premium unable to access Internet
+https://github.com/Dreamacro/clash/issues/432#issuecomment-571634905
+https://github.com/Dreamacro/clash/issues/2480
+
 ## error: unsupported rule type RULE-SET
 
 ```
