@@ -18,6 +18,11 @@ The official Clash core project will not implement/fix these things:
 * TCP support for Clash DNS server: https://github.com/Dreamacro/clash/issues/368
 * MITM: https://github.com/Dreamacro/clash/issues/227#issuecomment-508693628
 
+The following will be considered implementing when the official Go QUIC library releases.
+
+* TUIC: https://github.com/Dreamacro/clash/issues/2222
+* Hysteria: https://github.com/Dreamacro/clash/issues/1863
+
 ## Time complexity of rule matching
 Refer to this discussion: [#422](https://github.com/Dreamacro/clash/issues/422)
 
