@@ -11,6 +11,7 @@ The official Clash core project will not implement/fix these things:
 * Snell: https://github.com/Dreamacro/clash/issues/2466
 * Custom CA: https://github.com/Dreamacro/clash/issues/2333
 * VMess Mux: https://github.com/Dreamacro/clash/issues/450
+* VLess: https://github.com/Dreamacro/clash/issues/1185
 * KCP: https://github.com/Dreamacro/clash/issues/16
 * mKCP: https://github.com/Dreamacro/clash/issues/2308
 * TLS Encrypted Client Hello: https://github.com/Dreamacro/clash/issues/2295
