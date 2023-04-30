@@ -1,7 +1,15 @@
 # Introduction
-The Premium core is proprietary, built on an internal CI pipeline.
+The Premium core is proprietary due to historical reasons. They are built and released on an internal CI pipeline.
 
-## Proxy
+For official descriptions of all releases, refer to [releases](https://github.com/Dreamacro/clash/releases/tag/premium) and click *History Release Note*
+
+## Experimental
+```
+experimental:
+  sniff-tls-sni: true
+```
+
+## Userland Wireguard outbound
 Due to the dependency on gvisor, wireguard is currently only available in premium
 
 ```yaml
@@ -88,6 +96,24 @@ tun:
 
 Finally, open clash
 
+## Auto redir
+
+Use Linux kernel nftables feature on pure Go. It can be replaced with `redir-port` (TCP) without any network config.
+
+It's recommended to work with TUN to handle TCP traffic. It improves the network throughput performance of some low performance devices compared to using exclusively TUN.
+
+```yaml
+interface-name: en0
+
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+    - any:53
+  auto-redir: true
+  auto-route: true
+```
+
 ## Script
 
 Script enables users to programmatically select a policy for the packets with more flexibility.
@@ -158,6 +184,8 @@ use script on `rules`
 script:
   shortcuts:
     quic: network == 'udp' and dst_port == 443
+    curl: resolve_process_name() == 'curl'
+    # curl: resolve_process_path() == '/usr/bin/curl'
 
 rules:
   - SCRIPT,quic,REJECT
@@ -295,22 +323,4 @@ It requires [kernel support](https://github.com/iovisor/bcc/blob/master/INSTALL.
 ebpf:
   redirect-to-tun:
     - eth0
-```
-
-## Auto redir
-
-Use Linux kernel nftables feature on pure Go. It can be replaced with `redir-port` (TCP) without any network config.
-
-It's recommended to work with TUN to handle TCP traffic. It improves the network throughput performance of some low performance devices compared to using exclusively TUN.
-
-```yaml
-interface-name: en0
-
-tun:
-  enable: true
-  stack: system
-  dns-hijack:
-    - any:53
-  auto-redir: true
-  auto-route: true
 ```
