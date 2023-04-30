@@ -10,7 +10,7 @@ Example `wg0.conf`:
 PrivateKey = ...
 Address = 172.16.0.1/32
 MTU = ...
-Table = 6666
+Table = off
 PostUp = ip rule add from 172.16.0.1/32 table 6666
 
 [Peer]
