@@ -176,7 +176,7 @@ interface Context {
 
 ## Script Shortcut
 
-use script on `rules`
+This feature enables the use of script in `rules` mode. By default, DNS resolution takes place for SCRIPT rules. `no-resolve` can be appended to the rule to prevent the resolution. (i.e.: `SCRIPT,quic,DIRECT,no-resolve`)
 
 **NOTE: `src_port` and `dst_port` are number**
 
