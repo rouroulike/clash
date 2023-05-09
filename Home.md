@@ -26,5 +26,3 @@ You can find the full list of contributors to this repository at [https://github
 This software is released under the [GPL-3.0](https://github.com/Dreamacro/clash/blob/master/LICENSE) open-source license.
 
 > Fun fact: before Oct '19, Clash was licensed under the MIT license.
->
->

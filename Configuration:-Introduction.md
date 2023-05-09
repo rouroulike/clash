@@ -4,22 +4,20 @@ Clash works by opening HTTP, SOCKS5, or the transparent proxy server on the loca
 
 # Specifying Configuration Directory
 
-By default, Clash reads the configuration files at `$HOME/.config/clash`. If it doesn't exist, Clash will generate a minimal configuration file.
-
-The main config file is `config.yaml`
+By default, Clash reads the configuration files at `$HOME/.config/clash`. If it doesn't exist, Clash will generate a minimal configuration file. The main configuration file is `config.yaml`.
 
 You can use command-line option `-d` to specify a configuration directory:
 
 ```undefined
-$ clash -d . # current directory
-$ clash -d /etc/clash
+clash -d . # current directory
+clash -d /etc/clash
 ```
 
 You can use command-line option `-f` to specify a configuration:
 
 ```undefined
-$ clash -f ./config.yaml # current directory
-$ clash -f /etc/clash/config.yaml
+clash -f ./config.yaml # current directory
+clash -f /etc/clash/config.yaml
 ```
 
 # Syntax
@@ -121,4 +119,3 @@ A policy can be either `DIRECT`, `REJECT`, a proxy group or a proxy server.
 ## no-resolve
 
 `no-resolve` is an additional option for `GEOIP`, `IP-CIDR`, or `IP-CIDR6` rules. Append `,no-resolve` to these rules to enable. Clash by default translates the domain names to IP addresses when encountering IP rules. Clash skips the IP rules with this option enabled when encountering packets that have an FQDN target.
-

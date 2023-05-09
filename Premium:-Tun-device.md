@@ -1,16 +1,24 @@
-Simply add the following to the main configuration:
+## Introduction
 
-**TIPS:**
+The Premium core has out-of-the-box support of TUN device. Being a Network layer device, it can be used to handle TCP, UDP, ICMP traffic. It has been extensively tested and used in production environments - you can even play competitive games with the use of Clash TUN.
 
-> TUN device also works on Android, but its control device is `/dev/tun` instead of `/dev/net/tun`, you need to create a symbolic link first. eg. `ln -sf /dev/tun /dev/net/tun`
->
->
-**NOTE:**
+Clash TUN has built-in support of the automatic management of the route table, rules and nftables, you can enable it with the options `tun.auto-route` and `tun.auto-redir`. However, they are only available on macOS, Windows, Linux and Android, and only receives IPv4 traffic currently.
 
-> `auto-route` and `auto-detect-interface` only available on macOS, Windows, Linux and Android, receive IPv4 traffic. if `system dns` is a private ip may lead to dns-hijack failure. Because `auto-route` will not capture private network traffics.
->
->
+There are two options of TCP/IP stack available: `system` or `gvisor`. We recommend that you always use `system` stack unless you have a specific reason to use `gvisor`, to get the best performance.
+
+## Technical Limitations
+
+* For Android, the control device is at `/dev/tun` instead of `/dev/net/tun`, you will need to create a symbolic link first (i.e. `ln -sf /dev/tun /dev/net/tun`)
+
+* DNS hijacking might result in a failure, if the system DNS is at a private IP address (since `auto-route` does not capture private network traffic).
+
+## Linux, macOS or Android
+
+This is an example configuration of the TUN feature:
+
 ```yaml
+interface-name: en0 # conflict with `tun.auto-detect-interface`
+
 tun:
   enable: true
   stack: system # or gvisor
@@ -19,39 +27,22 @@ tun:
   #   - tcp://8.8.8.8:53
   #   - any:53
   #   - tcp://any:53
-  auto-route: true # auto set global route
-  auto-detect-interface: true # conflict with interface-name
+  auto-route: true # manage `ip route` and `ip rules`
+  auto-redir: true # manage nftable REDIRECT
+  auto-detect-interface: true # conflict with `interface-name`
 ```
 
-or
+Be advised, since the use of TUN device and manipulation of system route/nft settings, Clash will need superuser privileges to run.
 
-```yaml
-interface-name: en0
-
-tun:
-  enable: true
-  stack: system # or gvisor
-  # dns-hijack:
-  #   - 8.8.8.8:53
-  #   - tcp://8.8.8.8:53
-  auto-route: true # auto set global route
+```shell
+sudo ./clash
 ```
 
-It's recommended to use `fake-ip` mode for the DNS server.
-
-Clash needs elevated permission to create TUN device:
-
-```undefined
-$ sudo ./clash
-```
-
-Then manually create the default route and DNS server. If your device already has some TUN device, Clash TUN might not work. In this case, `fake-ip-filter` may helpful.
-
-Enjoy! :)
+If your device already has some TUN device, Clash TUN might not work - you will have to check the route table and routing rules manually. In this case, `fake-ip-filter` may helpful as well.
 
 ## Windows
 
-go to https://www.wintun.net and download the latest release, copy the right `wintun.dll` into Clash home directory
+You will need to visit the [WinTUN website](https://www.wintun.net) and download the latest release. After that, copy `wintun.dll` into Clash home directory. Example configuration:
 
 ```yaml
 tun:
@@ -63,6 +54,3 @@ tun:
   # It is recommended to use `interface-name`
   auto-detect-interface: true # auto detect interface, conflict with `interface-name`
 ```
-
-Finally, open clash
-

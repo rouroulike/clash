@@ -1,46 +1,28 @@
-# Getting Started
-
-We know it's easy to get confused with new things,
-
-### Table for reference
-
-In here, we have prepared a sheet citing each common use cases for Clash.
-
-Transparent Proxy on Gateway
-
-Linux
-
-Premium
-
-Web browsing
-
-Any
-
-Any
-
-### Use pre-built binaries
+## Using pre-built binaries
 
 You can download Clash core binaries here: [https://github.com/Dreamacro/clash/releases](https://github.com/Dreamacro/clash/releases)
 
-### Install from source
+## Install from source
 
 You can build Clash on your own device with Golang 1.19+:
 
-```undefined
+```shell
 $ go install github.com/Dreamacro/clash@latest
+go: downloading github.com/Dreamacro/clash v1.15.1
 ```
 
 The binary is built under `$GOPATH/bin`:
 
-```undefined
+```shell
 $ $GOPATH/bin/clash -v
+Clash unknown version darwin arm64 with go1.20.3 unknown time
 ```
 
-### Build for a different arch/os
+## Build for a different arch/os
 
 Golang supports cross-compilation, so you can build for a device on a different architecture or operating system. You can use _make_ to build them easily - for example:
 
-```undefined
+```shell
 $ git clone --depth 1 https://github.com/Dreamacro/clash
 Cloning into 'clash'...
 remote: Enumerating objects: 359, done.
@@ -57,4 +39,3 @@ bin/clash-darwin-arm64: Mach-O 64-bit executable arm64
 ```
 
 For other build targets, check out the [Makefile](https://github.com/Dreamacro/clash/blob/master/Makefile).
-

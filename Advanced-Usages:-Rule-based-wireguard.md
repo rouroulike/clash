@@ -31,4 +31,3 @@ rules:
 ```
 
 This should perform better than whereas if Clash implemented its own userspace Wireguard client. Wireguard is supported in the kernel.
-

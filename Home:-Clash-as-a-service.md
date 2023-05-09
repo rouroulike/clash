@@ -5,9 +5,9 @@ While Clash is meant to be run in the background, there's currently no elegant w
 Copy Clash binary to `/usr/local/bin` and configuration files to `/etc/clash`:
 
 ```undefined
-$ cp clash /usr/local/bin
-$ cp config.yaml /etc/clash/
-$ cp Country.mmdb /etc/clash/
+cp clash /usr/local/bin
+cp config.yaml /etc/clash/
+cp Country.mmdb /etc/clash/
 ```
 
 Create the systemd configuration file at `/etc/systemd/system/clash.service`:
@@ -28,27 +28,27 @@ WantedBy=multi-user.target
 
 After that you're supposed to reload systemd:
 
-```undefined
-$ systemctl daemon-reload
+```shell
+systemctl daemon-reload
 ```
 
 Launch clashd on system startup with:
 
-```undefined
-$ systemctl enable clash
+```shell
+systemctl enable clash
 ```
 
 Launch clashd immediately with:
 
-```undefined
-$ systemctl start clash
+```shell
+systemctl start clash
 ```
 
 Check the health and logs of Clash with:
 
-```undefined
-$ systemctl status clash
-$ journalctl -xe
+```shell
+systemctl status clash
+journalctl -xe
 ```
 
 Credits to [ktechmidas](https://github.com/ktechmidas) for this guide. ([#754](https://github.com/Dreamacro/clash/issues/754))
@@ -88,19 +88,18 @@ services:
 
 Save as `docker-compose.yaml`, create `config.yaml` in the same directory, and run the below commands to get Clash up:
 
-```undefined
-$ docker-compose up -d
+```shell
+docker-compose up -d
 ```
 
 You can view the logs with:
 
-```undefined
-$ docker-compose logs
+```shell
+docker-compose logs
 ```
 
 Stop Clash with:
 
-```undefined
-$ docker-compose stop
+```shell
+docker-compose stop
 ```
-

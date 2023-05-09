@@ -471,4 +471,3 @@ rules:
   - RULE-SET,apple,REJECT # Premium only
   - MATCH,auto
 ```
-

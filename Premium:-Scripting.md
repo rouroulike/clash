@@ -85,4 +85,3 @@ type match_provider = (name: string) => boolean // in rule provider
 type resolve_process_name = () => string // find process name (curl .e.g)
 type resolve_process_path = () => string // find process path (/usr/bin/curl .e.g)
 ```
-

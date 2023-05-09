@@ -106,4 +106,3 @@ rules:
   - RULE-SET,apple,REJECT
   - RULE-SET,microsoft,policy
 ```
-
