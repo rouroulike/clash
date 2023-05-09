@@ -1,42 +1,4 @@
-This page showcases some special use cases of Clash, unveiling its potential power.
-
-## Rule-based Wireguard
-Suppose your kernel supports Wireguard and you have it enabled. 
-The `Table` option stops *wg-quick* from overriding default routes.
-
-Example `wg0.conf`:
-```
-[Interface]
-PrivateKey = ...
-Address = 172.16.0.1/32
-MTU = ...
-Table = off
-PostUp = ip rule add from 172.16.0.1/32 table 6666
-
-[Peer]
-AllowedIPs = 0.0.0.0/0
-AllowedIPs = ::/0
-PublicKey = ...
-Endpoint = ...
-```
-
-Then in Clash you would only need to have a DIRECT proxy group that has a specific outbound interface:
-
-```yaml
-proxy-groups:
-  - name: Wireguard
-    type: select
-    interface-name: wg0
-    proxies:
-      - DIRECT
-rules:
-  - DOMAIN,google.com,Wireguard
-```
-
-This should perform better than whereas if Clash implemented its own userspace Wireguard client. Wireguard is supported in the kernel.
-
-## Use with OpenConnect
-OpenConnect supports Cisco AnyConnect SSL VPN, Juniper Network Connect, Palo Alto Networks (PAN) GlobalProtect SSL VPN, Pulse Connect Secure SSL VPN, F5 BIG-IP SSL VPN, FortiGate SSL VPN and Array Networks SSL VPN. 
+OpenConnect supports Cisco AnyConnect SSL VPN, Juniper Network Connect, Palo Alto Networks (PAN) GlobalProtect SSL VPN, Pulse Connect Secure SSL VPN, F5 BIG-IP SSL VPN, FortiGate SSL VPN and Array Networks SSL VPN.
 
 For example, there would be a use case where your company uses Cisco AnyConnect for internal network access. Here I'll show you how you can use OpenConnect with policy routing powered by Clash.
 
@@ -73,7 +35,7 @@ fi" \
 
 After that, we configure it as a systemd service. Create `/etc/systemd/system/tun0.service`:
 
-```
+```undefined
 [Unit]
 Description=Cisco AnyConnect VPN
 After=network-online.target
@@ -93,7 +55,7 @@ WantedBy=multi-user.target
 
 Then we enable & start the service.
 
-```
+```undefined
 chmod +x /path/to/tun0.sh
 systemctl daemon-reload
 systemctl enable tun0
@@ -104,7 +66,7 @@ From here you can look at the logs to see if it's running properly. Simple way i
 
 Similar to the Wireguard one, having an outbound to a TUN device is simple as adding a proxy group:
 
-```
+```undefined
 proxy-groups:
   - name: Cisco AnyConnect VPN
     type: select
@@ -115,9 +77,10 @@ proxy-groups:
 
 ... and it's ready to use! Add the desired rules:
 
-```
+```undefined
 rules:
   - DOMAIN-SUFFIX,internal.company.com,Cisco AnyConnect VPN
 ```
 
 You should look at the debug level logs when something does not seem right.
+

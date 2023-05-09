@@ -1,15 +1,17 @@
-# Preface
-Clash is meant to be run in the background, there's currently no way to implement daemons elegantly with Golang. We can daemonize Clash with third-party tools.
+While Clash is meant to be run in the background, there's currently no elegant way to implement daemons with Golang, hence we recommend you to daemonize Clash with third-party tools.
 
 # systemd
+
 Copy Clash binary to `/usr/local/bin` and configuration files to `/etc/clash`:
-```
+
+```undefined
 $ cp clash /usr/local/bin
 $ cp config.yaml /etc/clash/
 $ cp Country.mmdb /etc/clash/
 ```
 
 Create the systemd configuration file at `/etc/systemd/system/clash.service`:
+
 ```ini
 [Unit]
 Description=Clash daemon, A rule-based proxy in Go.
@@ -26,22 +28,25 @@ WantedBy=multi-user.target
 
 After that you're supposed to reload systemd:
 
-```
+```undefined
 $ systemctl daemon-reload
 ```
 
 Launch clashd on system startup with:
-```
+
+```undefined
 $ systemctl enable clash
 ```
 
 Launch clashd immediately with:
-```
+
+```undefined
 $ systemctl start clash
 ```
 
 Check the health and logs of Clash with:
-```
+
+```undefined
 $ systemctl status clash
 $ journalctl -xe
 ```
@@ -49,6 +54,7 @@ $ journalctl -xe
 Credits to [ktechmidas](https://github.com/ktechmidas) for this guide. ([#754](https://github.com/Dreamacro/clash/issues/754))
 
 # Docker
+
 We recommend deploying Clash with [Docker Compose](https://docs.docker.com/compose/) if you're on Linux.
 
 On macOS, it's recommended to use the third-party Clash GUI [ClashX Pro](https://install.appcenter.ms/users/clashx/apps/clashx-pro/distribution_groups/public). ([#770](https://github.com/Dreamacro/clash/issues/770#issuecomment-650951876))
@@ -82,24 +88,19 @@ services:
 
 Save as `docker-compose.yaml`, create `config.yaml` in the same directory, and run the below commands to get Clash up:
 
-```
+```undefined
 $ docker-compose up -d
 ```
- 
+
 You can view the logs with:
 
-```
+```undefined
 $ docker-compose logs
 ```
 
 Stop Clash with:
 
-```
+```undefined
 $ docker-compose stop
 ```
 
-# PM2
-```
-$ wget -qO- https://getpm2.com/install.sh | bash
-$ pm2 start clash
-```

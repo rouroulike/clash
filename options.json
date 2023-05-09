@@ -1,0 +1,37 @@
+{
+  "menu": {
+    "item": "{{#levelRepeat}}  {{/levelRepeat}}* [{{{title}}}]({{{link}}})\n",
+    "category": "{{#levelRepeat}}  {{/levelRepeat}}* {{#link}}[{{{title}}}]({{{link}}}){{/link}}{{^link}}{{{title}}}{{/link}}\n{{{subitems}}}",
+    "category-1": "{{{subitems}}}\n"
+  },
+  "rules": {
+    "exclude": [],
+    "order": [
+      "Home:-Introduction.md",
+      "Home:-Getting-started.md",
+      "Home:-Clash-as-a-service.md",
+      "Home:-Frequently-asked-questions.md",
+      "Configuration:-Introduction.md",
+      "Configuration:-Example-configuration.md",
+      "Configuration:-Dns.md",
+      "Runtime:-The-External-Controller.md",
+      "Premium:-Introduction.md",
+      "Premium:-Tun-device.md",
+      "Premium:-Userspace-wireguard-outbound.md",
+      "Premium:-Rule-providers.md",
+      "Premium:-Scripting.md",
+      "Premium:-The-profiling-engine.md",
+      "Premium:-Auto-redir.md",
+      "Premium:-Ebpf.md",
+      "Premium:-Experimental-features.md",
+      "Advanced-Usages:-Rule-based-wireguard.md",
+      "Advanced-Usages:-Rule-based-openconnect.md",
+      "Advanced-Usages:-Integrating-clash-in-golang-programs.md"
+    ]
+  },
+  "separator": ":-",
+  "linkTemplate": "./%s",
+  "menuFile": "_Sidebar.md",
+  "multilang": false,
+  "menuOnly": true
+}
