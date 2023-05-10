@@ -7,20 +7,6 @@ There are currently two publicly distributed versions of Clash:
 
 This wiki covers both versions.
 
-# The Developers
-
-There will be no Clash without the following incredible developers:
-
-- [Dreamacro](https://github.com/Dreamacro)
-- [Beyondkmp](https://github.com/beyondkmp)
-- [Comzyh](https://github.com/comzyh)
-- [Duament](https://github.com/duament)
-- [Fndroid](https://github.com/Fndroid)
-- [Kr328](https://github.com/kr328)
-- ... and more
-
-You can find the full list of contributors to this repository at [https://github.com/Dreamacro/clash/graphs/contributors](https://github.com/Dreamacro/clash/graphs/contributors).
-
 # License
 
 This software is released under the [GPL-3.0](https://github.com/Dreamacro/clash/blob/master/LICENSE) open-source license.
